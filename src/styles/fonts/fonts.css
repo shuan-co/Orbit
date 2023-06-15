@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'AC-SUPERG';
+    src: url('./Aka-AcidGR-SuperG.ttf.eot');
+    src: url('./Aka-AcidGR-SuperG.ttf.eot#iefix') format('embedded-opentype'),
+         url('./Aka-AcidGR-SuperG.ttf.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow-Light';
+    src: url('./Tomorrow-Light.ttf') format('truetype');
+    /* Additional font properties (optional) */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow-Thin';
+    src: url('./Tomorrow-Thin.ttf') format('truetype');
+    /* Additional font properties (optional) */
+    font-weight: normal;
+    font-style: normal;
+}

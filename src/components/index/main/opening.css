@@ -1,0 +1,54 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#astronaut {
+    width: 35vw;
+    height: 50vh;
+}
+
+#opening-text {
+    font-family: "AC-SUPERG";
+    color: #fff;
+        text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px rgb(121, 55, 113),
+            0 0 82px rgb(121, 55, 113);
+    
+    font-size: 8vw;
+}
+
+#lower-text {
+    font-family: "Tomorrow-Thin";
+    color: white;
+    font-size:2.5vw;
+    
+}
+
+/* ANIMATIONS */
+.floating {
+    animation-name: floating;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 30px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}

@@ -1,0 +1,16 @@
+::-webkit-scrollbar {
+    width: 0;
+    scrollbar-width: none;
+}
+html {
+    scrollbar-width: none;
+}
+
+body {
+    background-color: #212529;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
