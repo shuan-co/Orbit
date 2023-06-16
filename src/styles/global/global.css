@@ -7,10 +7,32 @@ html {
 }
 
 body {
-    background-color: #212529;
+    background: rgb(31,30,54);
+    background: linear-gradient(180deg, rgba(31,30,54,1) 0%, rgba(0,0,0,1) 100%);
+    @keyframes animate {
+        0%, 100%
+        {
+            filter: hue-rotate(0deg);
+        }
+        50%
+        {
+            filter: hue-rotate(360deg);
+        }
+    }
 }
 
 html, body {
     margin: 0;
     padding: 0;
+}
+
+@keyframes animate {
+    0%, 100%
+    {
+        filter: hue-rotate(0deg);
+    }
+    50%
+    {
+        filter: hue-rotate(360deg);
+    }
 }

@@ -4,6 +4,7 @@ function Opening() {
   return (
     <>
       <div id="container">
+        <video id="background" src="./index/main/background.mp4" autoPlay loop muted></video>
         <img
           id="astronaut"
           className="floating"
