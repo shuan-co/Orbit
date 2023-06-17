@@ -176,7 +176,7 @@
 #container-features2 #card-features2 #information-features2 {
     position: relative;
     left: 0;
-    padding: 5vh 1vw;
+    padding: 3vh 0.8vw;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     border-radius: 8px;
@@ -193,7 +193,8 @@
 
 #container-features2 #card-features2 #information-features2 h2 {
     font-family: "AC-SUPERG";
-    font-size: 2em;
+    font-size: 1.4vw;
+    font-weight: 700;
     color: #fff;
     line-height: 1.4em;
 }
@@ -201,15 +202,15 @@
 #container-features2 #card-features2 #information-features2 p {
     font-family: "Tomorrow-Light";
     font-weight: 700;
-    font-size: 1.1em;
+    font-size: 0.75vw;
     margin-bottom: 10px;
     line-height: 1.4em;
 }
 
-#container-features2 #card-features2 #information-features2 a {
+#container-features2 #card-features2 #information-features2 Button {
     font-family: "Tomorrow-Thin";
     display: inline-block;
-    font-size: 1.1em;
+    font-size: 0.7vw;
     color: #111;
     background: #fff;
     padding:10px;
@@ -217,4 +218,20 @@
     text-decoration: none;
     font-weight: 700;
     margin-top: 5px;
+    border: none;
+    outline: none;
+}
+
+#main-modal-features2 {
+    font-family: "AC-SUPERG";
+    font-size: 2em;
+    color: white;
+    margin: 2vh;
+}
+
+#sub-modal-features2 {
+    font-family: "Tomorrow-Light";
+    font-size: 1.5em;
+    color: white;
+    margin: 2vh;
 }

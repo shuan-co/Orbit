@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
 // Components
-import Scrollbar from "./components/scrollbar/Scrollbar.jsx";
 import NavigationBar from "./components/navigation/NavigationBar.jsx";
 import Index from "./components/index/Index.jsx";
 
@@ -20,6 +19,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <NavigationBar />
     <Index />
     <App />
-    <Scrollbar />
   </React.StrictMode>
 );

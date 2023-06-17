@@ -4,6 +4,9 @@ import AboutUs from "./aboutus/AboutUs.jsx";
 import AboutUs2 from "./aboutus2/AboutUs2.jsx";
 import AboutUs3 from "./aboutus3/AboutUs3.jsx";
 import Features from "./features/Features.jsx";
+import Features2 from "./features2/Features2.jsx";
+import Security from "./security/Security.jsx";
+import Security2 from "./security2/Security2.jsx";
 
 // Scrollbar
 import { useEffect, useRef } from "react";
@@ -14,7 +17,6 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 // CSS
 import "./index.css";
-import Features2 from "./features2/Features2.jsx";
 
 function Index() {
   const parallaxContainerRef = useRef(null);
@@ -41,24 +43,30 @@ function Index() {
   return (
     <>
       <div className="stage">
-        <Parallax pages={6} ref={parallaxContainerRef}>
-          <ParallaxLayer speed={1}>
+        <Parallax pages={8} ref={parallaxContainerRef}>
+          <ParallaxLayer>
             <Opening />
           </ParallaxLayer>
-          <ParallaxLayer offset={1} speed={0.5}>
+          <ParallaxLayer offset={1}>
             <AboutUs />
           </ParallaxLayer>
-          <ParallaxLayer offset={2} speed={0.5}>
+          <ParallaxLayer offset={2}>
             <AboutUs2 />
           </ParallaxLayer>
-          <ParallaxLayer offset={3} speed={0.5}>
+          <ParallaxLayer offset={3}>
             <AboutUs3 />
           </ParallaxLayer>
-          <ParallaxLayer offset={4} speed={0.5}>
+          <ParallaxLayer offset={4}>
             <Features />
           </ParallaxLayer>
-          <ParallaxLayer offset={5} speed={0.5}>
+          <ParallaxLayer offset={5}>
             <Features2 />
+          </ParallaxLayer>
+          <ParallaxLayer offset={6}>
+            <Security />
+          </ParallaxLayer>
+          <ParallaxLayer offset={7}>
+            <Security2 />
           </ParallaxLayer>
 
           <div id="progressbar-scrollbar"></div>

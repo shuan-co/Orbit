@@ -1,0 +1,130 @@
+#container-security2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 40px 0;
+    flex-wrap: wrap;
+
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#container-security2 #card-security2 {
+    position: relative;
+    width: 21vw;
+    height: 55vh;
+    color: #fff;
+    background: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20vh 2vw;
+    transition: 0.5s;
+}
+
+#container-security2 #card-security2:hover {
+    transform: translateY(-20px);
+}
+
+#container-security2 #card-security2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffbc00, #ff0058);
+}
+
+#container-security2 #card-security2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffbc00, #ff0058);
+}
+
+#container-security2 #card-security2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffbc00, #ff0058);
+    filter: blur(30px);
+}
+
+#container-security2 #card-security2:nth-child(2):before,
+#container-security2 #card-security2:nth-child(2):after {
+    background: linear-gradient(315deg, #03a9f4, #ff0058);
+}
+
+#container-security2 #card-security2:nth-child(3):before,
+#container-security2 #card-security2:nth-child(3):after {
+    background: linear-gradient(315deg, #4dff03, #00d0ff);
+}
+
+#container-security2 #card-security2:hover span {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    transition: 0.5s;
+}
+
+#container-security2 #card-security2:hover span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+#container-security2 #card-security2 #information-security2 {
+    position: relative;
+    z-index: 10;
+    padding: 20px 40px;
+
+}
+
+#container-security2 #card-security2 #information-security2 h2 {
+    font-family: "AC-SUPERG";
+    font-weight: 700;
+    font-size: 1.5vw;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+#container-security2 #card-security2 #information-security2 p {
+    font-family: "Tomorrow-Light";
+    font-weight: 700;
+    font-size: 0.8vw;
+    color: #fff;
+    margin-bottom: 0.8vh;
+    line-height: 1.4em;
+}
+
+#container-security2 #card-security2 #information-security2 a {
+    display: inline-block;
+    font-size: 0.8vw;
+    color: #111;
+    background: #fff;
+    padding: 0.25vw;
+    text-decoration: none;
+    font-weight: 700;
+}

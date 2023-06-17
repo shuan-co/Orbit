@@ -1,9 +1,81 @@
 const config = {
   autoPlay: true,
+  absorbers: {
+    color: {
+      value: "#000",
+    },
+    draggable: false,
+    opacity: 1,
+    destroy: true,
+    orbits: false,
+    size: {
+      random: {
+        enable: true,
+        minimumValue: 200,
+      },
+      value: {
+        min: 200,
+        max: 200,
+      },
+      density: 20,
+      limit: {
+        radius: 200,
+        mass: 0,
+      },
+    },
+    position: {
+      x: 51,
+      y: 40,
+    },
+    shadow: {
+      color: "#000000",
+      blur: 100,
+      enable: true,
+    },
+    shape: {
+      type: "circle",
+    },
+    stroke: {
+      color: "#000000",
+      width: 2,
+    },
+    zIndex: 4,
+  },
+  emitters: [
+    {
+      life: {
+        count: 0,
+        duration: 0.1,
+      },
+      position: {
+        x: {
+          min: 0,
+          max: 1000,
+        },
+        y: {
+          min: 0,
+          max: 1000,
+        },
+      },
+      size: {
+        width: 0,
+        height: 0,
+      },
+      rate: {
+        quantity: 3,
+        delay: 0.1,
+      },
+    },
+  ],
   background: {
     color: {
       value: "#000",
     },
+    image: "",
+    position: "50% 50%",
+    repeat: "no-repeat",
+    size: "cover",
+    opacity: 1,
   },
   backgroundMask: {
     composite: "destination-out",
@@ -37,15 +109,6 @@ const config = {
         mode: [],
         type: "circle",
       },
-      onHover: {
-        enable: true,
-        mode: "bubble",
-        parallax: {
-          enable: false,
-          force: 2,
-          smooth: 10,
-        },
-      },
       resize: {
         delay: 0.5,
         enable: true,
@@ -64,11 +127,11 @@ const config = {
         distance: 200,
       },
       bubble: {
-        distance: 250,
-        duration: 2,
+        distance: 400,
+        duration: 0.3,
         mix: false,
-        opacity: 0,
-        size: 0,
+        opacity: 1,
+        size: 4,
         divs: {
           distance: 200,
           duration: 0.4,
@@ -88,7 +151,7 @@ const config = {
         links: {
           blink: false,
           consent: false,
-          opacity: 1,
+          opacity: 0.5,
         },
       },
       push: {
@@ -100,7 +163,7 @@ const config = {
         quantity: 2,
       },
       repulse: {
-        distance: 400,
+        distance: 200,
         duration: 0.4,
         factor: 100,
         speed: 1,
@@ -193,7 +256,7 @@ const config = {
       },
     },
     color: {
-      value: "#ffffff",
+      value: "#fff",
       animation: {
         h: {
           count: 0,
@@ -235,7 +298,7 @@ const config = {
         enable: false,
         rotate: {
           x: 600,
-          y: 600,
+          y: 1200,
         },
       },
       center: {
@@ -246,11 +309,11 @@ const config = {
       },
       decay: 0,
       distance: {},
-      direction: "none",
+      direction: "none", // Set direction to "none" to remove falling animation
       drift: 0,
       enable: true,
       gravity: {
-        acceleration: 9.81,
+        acceleration: 0, // Set acceleration to 0 to remove falling animation
         enable: false,
         inverse: false,
         maxSpeed: 50,
@@ -274,9 +337,9 @@ const config = {
         right: "out",
         top: "out",
       },
-      random: true,
+      random: false,
       size: false,
-      speed: 1,
+      speed: 0.1,
       spin: {
         acceleration: 0,
         enable: false,
@@ -297,7 +360,7 @@ const config = {
         height: 1080,
       },
       limit: 0,
-      value: 600,
+      value: 500,
     },
     opacity: {
       random: {
@@ -305,12 +368,12 @@ const config = {
         minimumValue: 0.1,
       },
       value: {
-        min: 0,
-        max: 1,
+        min: 0.1,
+        max: 0.5,
       },
       animation: {
         count: 0,
-        enable: true,
+        enable: false,
         speed: 1,
         decay: 0,
         delay: 0,
@@ -318,7 +381,7 @@ const config = {
         mode: "auto",
         startValue: "random",
         destroy: "none",
-        minimumValue: 0,
+        minimumValue: 0.1,
       },
     },
     reduceDuplicates: false,
@@ -342,23 +405,23 @@ const config = {
     size: {
       random: {
         enable: true,
-        minimumValue: 1,
+        minimumValue: 2,
       },
       value: {
-        min: 1,
-        max: 3,
+        min: 2,
+        max: 2,
       },
       animation: {
         count: 0,
         enable: false,
-        speed: 4,
+        speed: 40,
         decay: 0,
         delay: 0,
         sync: false,
         mode: "auto",
         startValue: "random",
         destroy: "none",
-        minimumValue: 0.3,
+        minimumValue: 0.1,
       },
     },
     stroke: {
@@ -508,7 +571,7 @@ const config = {
         value: "#ffffff",
       },
       consent: false,
-      distance: 150,
+      distance: 500,
       enable: false,
       frequency: 1,
       opacity: 0.4,
@@ -523,7 +586,7 @@ const config = {
         enable: false,
         frequency: 1,
       },
-      width: 1,
+      width: 2,
       warp: false,
     },
     repulse: {
@@ -554,5 +617,4 @@ const config = {
     },
   },
 };
-
 export default config;
