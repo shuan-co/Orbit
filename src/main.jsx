@@ -12,13 +12,14 @@ import "bootstrap/dist/css/bootstrap.css";
 
 // CSS
 import "./styles/global/global.css";
+import "./styles/global/animations.css";
 import "./styles/fonts/fonts.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <NavigationBar />
-    <Scrollbar />
     <Index />
     <App />
+    <Scrollbar />
   </React.StrictMode>
 );

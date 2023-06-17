@@ -1,4 +1,4 @@
-#container {
+#container-opening {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,12 +10,12 @@
     overflow: hidden;
 }
 
-#astronaut {
+#astronaut-opening {
     width: 35vw;
-    height: 40vh;
+    height: 50vh;
 }
 
-#opening-text {
+#opening-text-opening {
     font-family: "AC-SUPERG";
     color: #fff;
         text-shadow:
@@ -28,14 +28,14 @@
     font-size: 8vw;
 }
 
-#lower-text {
+#lower-text-opening {
     font-family: "Tomorrow-Thin";
     color: white;
     font-size:2.5vw;
     
 }
 
-#background {
+#background-opening {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,28 +43,4 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
-}
-
-/* ANIMATIONS */
-.floating {
-    animation-name: floating;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    margin-left: 30px;
-    margin-top: 5px;
-}
-
-@keyframes floating {
-    0% {
-        transform: translate(0, 0px);
-    }
-
-    50% {
-        transform: translate(0, 30px);
-    }
-
-    100% {
-        transform: translate(0, -0px);
-    }
 }

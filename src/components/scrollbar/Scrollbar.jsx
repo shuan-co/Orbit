@@ -4,7 +4,7 @@ import "./scrollbar.css";
 function Scrollbar() {
   useEffect(() => {
     const updateProgressBar = () => {
-      const progress = document.getElementById("progressbar");
+      const progress = document.getElementById("progressbar-scrollbar");
       const totalHeight = document.body.scrollHeight - window.innerHeight;
       const progressHeight = (window.pageYOffset / totalHeight) * 100;
       progress.style.height = progressHeight + "%";
@@ -21,8 +21,8 @@ function Scrollbar() {
 
   return (
     <>
-      <div id="progressbar"></div>
-      <div id="scrollpath"></div>
+      <div id="progressbar-scrollbar"></div>
+      <div id="scrollpath-scrollbar"></div>
     </>
   );
 }
