@@ -1,0 +1,42 @@
+#container-features {
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    
+        flex-direction: column;
+    
+    
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+}
+
+#header-text-features {
+    font-family: "Tomorrow-Thin";
+    letter-spacing: 1vw;
+    color: white;
+    font-size: 1.5vw;
+    margin-left: 2.3vw;
+}
+
+#main-text-features {
+    font-family: "AC-SUPERG";
+        color: #fff;
+        text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff;
+    
+        font-size: 8vw;
+}
+
+#sub-text-features {
+    font-family: "Tomorrow-Light";
+        color: white;
+        font-size: 2.3vw;
+        margin-left: 2vw;
+        margin-bottom: 8vh;
+}
