@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "./features2.css";
@@ -85,8 +84,8 @@ function Features2() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "50vw",
-            height: "50vh",
+            width: "auto",
+            height: "auto",
             background:
               "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0))",
             backdropFilter: "blur(10px)",

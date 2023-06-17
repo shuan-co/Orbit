@@ -7,6 +7,8 @@ import Features from "./features/Features.jsx";
 import Features2 from "./features2/Features2.jsx";
 import Security from "./security/Security.jsx";
 import Security2 from "./security2/Security2.jsx";
+import Technologies from "./technologies/Technologies.jsx";
+import Technologies2 from "./technologies2/Technologies2.jsx";
 
 // Scrollbar
 import { useEffect, useRef } from "react";
@@ -43,7 +45,7 @@ function Index() {
   return (
     <>
       <div className="stage">
-        <Parallax pages={8} ref={parallaxContainerRef}>
+        <Parallax pages={10} ref={parallaxContainerRef}>
           <ParallaxLayer>
             <Opening />
           </ParallaxLayer>
@@ -67,6 +69,12 @@ function Index() {
           </ParallaxLayer>
           <ParallaxLayer offset={7}>
             <Security2 />
+          </ParallaxLayer>
+          <ParallaxLayer offset={8}>
+            <Technologies />
+          </ParallaxLayer>
+          <ParallaxLayer offset={9}>
+            <Technologies2 />
           </ParallaxLayer>
 
           <div id="progressbar-scrollbar"></div>

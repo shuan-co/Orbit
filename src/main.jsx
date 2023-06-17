@@ -8,10 +8,10 @@ import Index from "./components/index/Index.jsx";
 
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 
 // CSS
 import "./styles/global/global.css";
-import "./styles/global/animations.css";
 import "./styles/fonts/fonts.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

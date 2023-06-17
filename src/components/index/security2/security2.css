@@ -113,13 +113,14 @@
 #container-security2 #card-security2 #information-security2 p {
     font-family: "Tomorrow-Light";
     font-weight: 700;
-    font-size: 0.8vw;
+    font-size: 0.85vw;
     color: #fff;
     margin-bottom: 0.8vh;
     line-height: 1.4em;
 }
 
-#container-security2 #card-security2 #information-security2 a {
+#container-security2 #card-security2 #information-security2 button {
+    font-family: "Tomorrow-Thin";
     display: inline-block;
     font-size: 0.8vw;
     color: #111;
@@ -127,4 +128,7 @@
     padding: 0.25vw;
     text-decoration: none;
     font-weight: 700;
+
+    outline: none;
+    border: none;
 }
