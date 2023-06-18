@@ -1,4 +1,4 @@
-#container-technologies2 {
+#container-slider {
     display: flex;
         justify-content: center;
         align-items: center;
@@ -14,7 +14,7 @@
         overflow: hidden;
 }
 
-#logos-technologies2 {
+#logos-slider {
     overflow: hidden;
     padding: 60px 0;
     background: black;
@@ -23,8 +23,8 @@
 
     width: 100%;
 }
-#logos-technologies2:before,
-#logoes-technologies2:after {
+#logos-slider:before,
+#logoes-slider:after {
     position: absolute;
         top: 0;
         width: 250px;
@@ -34,36 +34,36 @@
         z-index: 2;
 }
 
-#logos-technologies2:before {
+#logos-slider:before {
     left: 0;
     background: linear-gradient(to left, rgba(255, 255, 255, 0), black);
 }
 
-#logos-technologies2:after {
+#logos-slider:after {
     right: 0;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), black);
 }
 
-#logo-slide-technologies2 {
+#logo-slide-slider {
     display: inline-block;
-    animation: 100s slide-technologies2 linear infinite;
+    animation: 100s slide-slider linear infinite;
 }
 
-#logos-technologies2:hover #logo-slide-technologies2 {
+#logos-slider:hover #logo-slide-slider {
     animation-play-state: paused;
 }
 
-#logo-slide-technologies2 img{
+#logo-slide-slider img{
     height: 30vh;
     margin: 0 10vw;
 }
 
-#logo-slide-technologies2 img:hover {
+#logo-slide-slider img:hover {
     transform: scale(1.2);
     transition: transform 1s ease-in-out;
 }
 
-@keyframes slide-technologies2 {
+@keyframes slide-slider {
     from {
         transform: translateX(0);
     }
