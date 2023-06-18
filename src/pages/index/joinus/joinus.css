@@ -1,38 +1,166 @@
-#container-technologies {
+#container-joinus {
+    display: flex; 
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+}
+
+#container-left-joinus {
     display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        text-align: center;
-    
-        flex-direction: column;
-    
-    
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
+
+    width: 65%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    /* Added to vertically center the content */
+    text-align: center;
 }
 
-#satellite-technologies {
-    width: 50vh;
-    margin-left: 2vw;
+#container-right-joinus img {
+    position: absolute;
 }
 
-#header-text-technologies {
-    font-family: "Tomorrow-Thin";
-    letter-spacing: 1vw;
+#side-joinus {
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: auto;
+}
+
+#radial-joinus {
+    width: 50vw;
+    height: 80vh;
+    right: -10vw;
+    top: 40vh;
+}
+
+#lines-joinus {
+    width: 30vw;
+    right: 0;
+    top: 42vh;
+}
+
+#astronaut-joinus {
+    position: absolute;
+    width: 35vw;
+    height: 60vh;
+    top: 16vh;
+    right: 15vw;
+}
+
+
+
+#lower-text-joinus {
+    font-family: "Tomorrow-Light";
     color: white;
     font-size: 1.5vw;
+    margin-left: 2vw;
+    width: 55%;
 }
 
-#main-text-technologies {
+#main-text-joinus {
     font-family: "AC-SUPERG";
     color: #fff;
     text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff;
+        0 0 7px #9fc9ff,
+        0 0 10px #9fc9ff,
+        0 0 21px #9fc9ff;
 
-    font-size: 5vw;
+    font-size: 3vw;
+    margin-left: 2vw;
+}
+
+#main-text-joinus:nth-child(2) {
+    color: #fff;
+    text-shadow:
+        0 0 7px #bcaaf1,
+        0 0 10px #bcaaf1,
+        0 0 21px #bcaaf1,
+        0 0 41px #bcaaf1;
+
+    font-size: 3vw;
+    margin-left: 2vw;
+}
+
+#button-joinus {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    width: 12vw;
+    height: 6.5vh;
+
+    font-family: "Tomorrow-Thin";
+    font-size: 1.2vw;
+    font-weight: 700;
+    transition: box-shadow 1s ease-in-out;
+    margin-left: 2vw;
+}
+
+
+#button-joinus:before {
+    content: "";
+    background: linear-gradient(45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 200%;
+    /* Reduced background-size */
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-joinus 30s linear infinite;
+    transition: opacity 1s ease-in-out;
+    border-radius: 10px;
+}
+
+
+
+@keyframes glowing-button-joinus {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 200% 0;
+        /* Adjusted background-position */
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+#button-joinus:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
 }

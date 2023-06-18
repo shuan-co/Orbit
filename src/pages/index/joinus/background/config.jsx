@@ -1,13 +1,12 @@
 const config = {
   autoPlay: true,
   background: {
-    color: {
-      value: "#000",
-    },
-    image: "",
-    position: "50% 50%",
-    repeat: "no-repeat",
-    size: "cover",
+    value: "",
+    image:
+      "linear-gradient(99.9deg, rgba(27, 24, 31, 1) 21.2%, rgb(26, 1, 47) 84.8%)",
+    position: "",
+    repeat: "",
+    size: "",
     opacity: 1,
   },
   backgroundMask: {
@@ -43,11 +42,11 @@ const config = {
         type: "circle",
       },
       onHover: {
-        enable: true,
-        mode: "grab",
+        enable: false,
+        mode: [],
         parallax: {
-          enable: true,
-          force: 60,
+          enable: false,
+          force: 2,
           smooth: 10,
         },
       },
@@ -69,11 +68,9 @@ const config = {
         distance: 200,
       },
       bubble: {
-        distance: 400,
-        duration: 2,
+        distance: 200,
+        duration: 0.4,
         mix: false,
-        opacity: 0.8,
-        size: 40,
         divs: {
           distance: 200,
           duration: 0.4,
@@ -89,7 +86,7 @@ const config = {
         radius: 60,
       },
       grab: {
-        distance: 400,
+        distance: 100,
         links: {
           blink: false,
           consent: false,
@@ -98,7 +95,7 @@ const config = {
       },
       push: {
         default: true,
-        groups: [],
+        groups: ["z5000", "z7500", "z2500", "z1000"],
         quantity: 4,
       },
       remove: {
@@ -198,7 +195,7 @@ const config = {
       },
     },
     color: {
-      value: "#ffffff",
+      value: "#fff",
       animation: {
         h: {
           count: 0,
@@ -229,18 +226,51 @@ const config = {
         },
       },
     },
-    groups: {},
+    groups: {
+      z5000: {
+        number: {
+          value: 70,
+        },
+        zIndex: {
+          value: 50,
+        },
+      },
+      z7500: {
+        number: {
+          value: 30,
+        },
+        zIndex: {
+          value: 75,
+        },
+      },
+      z2500: {
+        number: {
+          value: 50,
+        },
+        zIndex: {
+          value: 25,
+        },
+      },
+      z1000: {
+        number: {
+          value: 40,
+        },
+        zIndex: {
+          value: 10,
+        },
+      },
+    },
     move: {
       angle: {
         offset: 0,
-        value: 90,
+        value: 10,
       },
       attract: {
         distance: 200,
         enable: false,
         rotate: {
-          x: 600,
-          y: 1200,
+          x: 3000,
+          y: 3000,
         },
       },
       center: {
@@ -251,7 +281,7 @@ const config = {
       },
       decay: 0,
       distance: {},
-      direction: "none",
+      direction: "right",
       drift: 0,
       enable: true,
       gravity: {
@@ -281,7 +311,7 @@ const config = {
       },
       random: false,
       size: false,
-      speed: 2,
+      speed: 5,
       spin: {
         acceleration: 0,
         enable: false,
@@ -297,33 +327,29 @@ const config = {
     },
     number: {
       density: {
-        enable: true,
+        enable: false,
         width: 1920,
         height: 1080,
       },
       limit: 0,
-      value: 100,
+      value: 200,
     },
     opacity: {
       random: {
-        enable: true,
+        enable: false,
         minimumValue: 0.1,
       },
-      value: {
-        min: 0.1,
-        max: 0.5,
-      },
+      value: 1,
       animation: {
         count: 0,
-        enable: true,
-        speed: 3,
+        enable: false,
+        speed: 2,
         decay: 0,
         delay: 0,
         sync: false,
         mode: "auto",
         startValue: "random",
         destroy: "none",
-        minimumValue: 0.1,
       },
     },
     reduceDuplicates: false,
@@ -346,24 +372,20 @@ const config = {
     },
     size: {
       random: {
-        enable: true,
+        enable: false,
         minimumValue: 1,
       },
-      value: {
-        min: 0.1,
-        max: 10,
-      },
+      value: 3,
       animation: {
         count: 0,
-        enable: true,
-        speed: 20,
+        enable: false,
+        speed: 5,
         decay: 0,
         delay: 0,
         sync: false,
         mode: "auto",
         startValue: "random",
         destroy: "none",
-        minimumValue: 0.1,
       },
     },
     stroke: {
@@ -374,8 +396,8 @@ const config = {
         enable: false,
         minimumValue: 0,
       },
-      value: 0,
-      opacityRate: 1,
+      value: 5,
+      opacityRate: 0.5,
       sizeRate: 1,
       velocityRate: 1,
     },
@@ -510,13 +532,13 @@ const config = {
     links: {
       blink: false,
       color: {
-        value: "#ffffff",
+        value: "#fff",
       },
       consent: false,
-      distance: 150,
-      enable: true,
+      distance: 100,
+      enable: false,
       frequency: 1,
-      opacity: 0.4,
+      opacity: 1,
       shadow: {
         blur: 5,
         color: {
@@ -551,6 +573,28 @@ const config = {
   style: {},
   themes: [],
   zLayers: 100,
+  emitters: {
+    autoPlay: true,
+    fill: true,
+    life: {
+      wait: false,
+    },
+    rate: {
+      quantity: 1,
+      delay: 7,
+    },
+    shape: "square",
+    startCount: 0,
+    size: {
+      mode: "percent",
+      height: 0,
+      width: 0,
+    },
+    position: {
+      x: -5,
+      y: 55,
+    },
+  },
   motion: {
     disable: false,
     reduce: {

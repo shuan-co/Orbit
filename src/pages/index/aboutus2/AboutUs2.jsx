@@ -4,6 +4,12 @@ function AboutUs2() {
   return (
     <>
       <div id="container-aboutus2">
+        <img
+          id="planet2-aboutus2"
+          className="floating"
+          src="./index/aboutus/planet2.png"
+          alt=""
+        />
         <h4 id="maintext-aboutus2">
           "Orbit, a groundbreaking social media platform designed to
           revolutionize the way you connect, engage, and express yourself

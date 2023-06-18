@@ -1,0 +1,48 @@
+#container-friendsbox {
+    width: 22vw;
+    height: 7.5vh;
+    margin: 1vw;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 252, 252, 0.5);
+
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    transition: border ease-in-out 0.5s;
+}
+
+#friends-icon-friendsbox {
+    border-radius: 50%;
+    width: 2.8vw;
+    height: 5.4vh;
+    margin-left: 0.5vw;
+}
+
+#friends-username-friendsbox {
+    font-family: "Tomorrow-Light";
+    color: rgb(221, 221, 221);
+    font-weight: 700;
+    font-size: 1vw;
+}
+
+#friends-direction-friendsbox {
+    font-family: "Tomorrow-Light";
+        color: rgba(221, 221, 221, 0.5);
+        margin-left: auto;
+        font-size: 1.6vw;
+        margin-right: 1.2vw;
+        transition: margin-right ease-in-out 0.2s;
+}
+
+#container-friendsbox:hover {
+    transition: border ease-in-out 0.5s;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+#container-friendsbox:hover #friends-direction-friendsbox {
+    transition: margin-right ease-in-out 0.2s;
+    margin-right: 1vw;
+}

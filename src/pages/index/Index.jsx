@@ -8,7 +8,6 @@ import Features2 from "./features2/Features2.jsx";
 import Security from "./security/Security.jsx";
 import Security2 from "./security2/Security2.jsx";
 import JoinUs from "./joinus/JoinUs.jsx";
-import Slider from "./slider/Slider.jsx";
 
 // Scrollbar
 import { useEffect, useRef } from "react";
@@ -45,7 +44,13 @@ function Index() {
   return (
     <>
       <div className="stage">
-        <Parallax pages={10} ref={parallaxContainerRef}>
+        <Parallax pages={9} ref={parallaxContainerRef}>
+          {/* FLOATING ELEMENTS */}
+          {/* <ParallaxLayer speed={0.5} sticky={{ start: 2, end: 2.5 }}>
+            <img src="./global/nebula/5.png" alt="" />
+          </ParallaxLayer> */}
+
+          {/* MAIN PARALLAX LAYERS */}
           <ParallaxLayer>
             <Opening />
           </ParallaxLayer>
@@ -73,10 +78,6 @@ function Index() {
           <ParallaxLayer offset={8}>
             <JoinUs />
           </ParallaxLayer>
-          <ParallaxLayer offset={9}>
-            <Slider />
-          </ParallaxLayer>
-
           <div id="progressbar-scrollbar"></div>
           <div id="scrollpath-scrollbar"></div>
         </Parallax>

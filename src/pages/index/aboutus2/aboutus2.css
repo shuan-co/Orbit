@@ -12,6 +12,7 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    background-color: black;
 }
 
 #maintext-aboutus2 {
@@ -19,4 +20,11 @@
     color: white;
     font-size: 1.5vw;
     width: 85%;
+    margin-bottom: 10vh;
+}
+
+#planet2-aboutus2 {
+    width: 20vw;
+    height: 40vh;
+    margin-right: 2.6vw;
 }

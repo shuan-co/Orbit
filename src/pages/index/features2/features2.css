@@ -11,7 +11,7 @@
         height: 100vh;
         overflow: hidden;
     gap: 2vw;
-
+    background-color: black;
 }
 
 #container-features2 #card-features2 {

@@ -4,6 +4,12 @@ function AboutUs3() {
   return (
     <>
       <div id="container-aboutus3">
+        <img
+          id="const-aboutus3"
+          className="floating"
+          src="./index/aboutus/const.png"
+          alt=""
+        />
         <h4 id="maintext-aboutus3">
           "With Orbit, we aim to cater to the diverse needs and preferences of
           our users. We believe in the power of customization, empowering you to
