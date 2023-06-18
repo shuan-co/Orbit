@@ -1,5 +1,14 @@
-function App() {
-  return <h1 style={{ fontFamily: "Tomorrow-Thin", color: "grey" }}></h1>;
-}
+import { ReactDOM } from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default App;
+// Pages
+import Index from "./pages/index/Index.jsx";
+import Login from "./pages/authentication/login/Login.jsx";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      
+    </BrowserRouter>
+  )
+}
