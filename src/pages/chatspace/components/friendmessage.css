@@ -1,0 +1,84 @@
+#container-message-FriendMessage {
+    width: 50%;
+    height: auto;
+    display: flex;
+    margin: 0.5vw;
+        margin-left: 3vw;
+    margin-top: 2.5vh;
+}
+
+#container-message-FriendMessage-sender {
+    width: 50%;
+        height: auto;
+        display: flex;
+        margin: 0.5vw;
+        margin-right: 3vw;
+    margin-left: auto;
+    margin-top: 2.5vh;
+}
+
+
+#message-icon-FriendMessage {
+    width: 3.8vw;
+    height: 7vh;
+    border-radius: 50%;
+    margin-right: 0.5vw;
+}
+
+#message-icon-FriendMessage-user {
+    width: 3.8vw;
+    height: 7vh;
+    border-radius: 50%;
+    margin-left: 0.5vw;
+}
+
+#message-info-FriendMessage {
+    display: flex;
+    flex-direction: column;
+}
+
+#message-name-FriendMessage {
+    font-family: "Tomorrow-Light";
+    font-weight: 700;
+    font-size: 1vw;
+    color: rgba(56, 56, 56, 0.7);
+    vertical-align: top;
+    margin: top;
+    margin: 0;
+}
+
+#message-name-FriendMessage-user {
+    font-family: "Tomorrow-Light";
+    font-weight: 700;
+    font-size: 1vw;
+    color: rgba(56, 56, 56, 0.7);
+    vertical-align: top;
+    margin: top;
+    margin: 0;
+    margin-left: auto;
+}
+
+#message-chatbubble-FriendMessage {
+    width: auto;
+    height: auto;
+    background: white;
+    border-radius: 0 1vw 1vw 1vw;
+    margin: 0;
+    padding: 0.5vw;
+}
+
+#message-chatbubble-FriendMessage-user {
+    width: auto;
+    height: auto;
+    background: #d4ba8b;
+    border-radius: 1vw 0vw 1vw 1vw;
+    margin: 0;
+    padding: 0.5vw;
+}
+
+#message-sent-FriendMessage {
+    font-family: "Tomorrow-Light";
+    font-size: 0.85vw;
+    font-weight: 700;
+    margin: 0;
+}

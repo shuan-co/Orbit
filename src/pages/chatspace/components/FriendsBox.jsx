@@ -1,9 +1,14 @@
+import React from "react";
 import "./friendsbox.css";
 
-function FriendsBox() {
+function FriendsBox({ onClick }) {
+  const handleClick = () => {
+    onClick(); // Invoke the onClick function passed as a prop
+  };
+
   return (
     <>
-      <div id="container-friendsbox">
+      <div id="container-friendsbox" onClick={handleClick}>
         <img
           id="friends-icon-friendsbox"
           src="./chatspace/usericontest.jpg"
