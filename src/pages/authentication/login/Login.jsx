@@ -32,6 +32,11 @@ function Login() {
           </div>
           <div id="container-auth-right-login">
             <div>
+              <img
+                id="container-auth-right-iconright-login"
+                src="./authentication/login/righticon.png"
+                alt=""
+              />
               <p id="container-auth-right-header-login">Welcome Aboard!</p>
               <p id="container-auth-right-lower-login">
                 What are your plans today, traveler?
@@ -52,7 +57,7 @@ function Login() {
                 />
                 <label
                   id="container-auth-right-label-login"
-                  htmlFor="container-auth-right-email-login"
+                  htmlFor="container-auth-right-password-login"
                 >
                   Password
                 </label>
@@ -61,7 +66,7 @@ function Login() {
                   name=""
                   placeholder="Minimum 8 characters"
                   className="container-auth-right-input-login"
-                  id="container-auth-right-email-login"
+                  id="container-auth-right-password-login"
                 />
                 <input id="container-auth-right-submit-login" type="submit" />
               </form>

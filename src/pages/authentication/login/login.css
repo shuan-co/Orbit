@@ -41,6 +41,12 @@
     flex-direction: column;
 }
 
+#container-auth-right-iconright-login {
+    width: 12vh;
+    margin-left: 10vh;
+    margin-bottom: 1vh;
+}
+
 #container-auth-right-login {
     /* position: absolute;
     z-index: -2; */
@@ -144,6 +150,7 @@
 #container-auth-right-submit-login {
     margin-left: auto;
     margin-top: 1vh;
+    margin-bottom: 4vh;
     align-items: center;
     background-color: #00000000;
     border: 2px solid #ffffff;
