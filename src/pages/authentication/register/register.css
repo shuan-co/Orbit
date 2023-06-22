@@ -1,0 +1,215 @@
+#container-register {
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    
+        flex-direction: column;
+    
+    
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+}
+
+
+#background-register {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#background-planet-register {
+    position: absolute;
+    z-index: -1;
+    top: -30vh;
+    right: -15vw;
+    width: 35vw;
+}
+
+#background-asset1-register {
+    position: absolute;
+    z-index: -1;
+    right: 12vw;
+    bottom: -12vh;
+    width: 30vw;
+}
+
+#background-asset2-register {
+    position: absolute;
+    z-index: -1;
+    top: -2vh;
+    left: 2vw;
+    width: 30vw;
+}
+
+
+#container-inner-register {
+    width: 80vw;
+    height: 70vh;
+
+    display: flex;
+}
+
+#container-inner-left-register {
+    background: rgba(0, 0, 0, 0.22);
+        border-radius: 16px 0 0px 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9.7px);
+        -webkit-backdrop-filter: blur(9.7px);
+    width: 40vw;
+    height: 75vh;
+}
+
+#container-inner-right-register {
+        background: rgba(56, 15, 55, 0.73);
+        border-radius: 0px 16px 16px 0px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(11.7px);
+        -webkit-backdrop-filter: blur(11.7px);
+    width: 40vw;
+    height: 75vh;
+}
+
+
+#container-inner-right-socialmedia-register {
+    display: block;
+        margin-left: auto;
+        margin-right: auto;
+    margin-top: 5vh;
+    width: 30vw;
+}
+
+#container-inner-right-planets-register {
+    display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5vh;
+        width: 24vw;
+}
+
+#container-inner-right-reels-register {
+    display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 9vh;
+        width: 25vw;
+}
+
+.container-inner-right-header-register {
+    font-family: "AC-SUPERG";
+    font-weight: 00;
+    color: white;
+    font-size: 1.5vw;
+}
+
+.container-inner-right-sub-register {
+    font-family: "Tomorrow-Thin";
+        font-weight: 700;
+        color: white;
+        font-size: 1vw;
+
+}
+
+.container-inner-right-caption-register {
+    margin-top: 2vh;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+
+}
+
+.carousel-caption {
+    position: relative;
+    bottom: 0vh;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+}
+
+.image-container {
+    position: relative;
+}
+
+#container-inner-left-form-register {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vw;
+    margin-top: 3vh;
+}
+
+#form-container-register {
+    display: flex;
+    flex-direction: column;
+}
+
+#form-container-register input {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 44, 44, 0.436);
+    font-family: "Tomorrow-Light";
+    font-size: 1vw;
+    padding: 0.8vw;
+    color: rgba(255, 255, 255, 0.477);
+    
+}
+
+#container-inner-left-form-header-register {
+    font-family: "Tomorrow-Light";
+    font-weight: 700;
+    color: rgba(219, 218, 218, 0.802);
+    font-size: 1.1vw;
+}
+
+#container-inner-left-form-main-register {
+    font-family: "AC-SUPERG";
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    font-size: 1.5vw;
+}
+
+#contaner-inner-left-form-sub-register {
+    font-family: "Tomorrow-Thin";
+        font-weight: 700;
+        color: rgba(219, 218, 218, 0.85);
+        font-size: 0.9vw;
+}
+
+.container-inner-left-form-input-register {
+    border: none;
+    outline: none;
+}
+
+#form-container-icon-register {
+    background: rgba(49, 120, 123, 0.73);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(11.7px);
+        -webkit-backdrop-filter: blur(11.7px);
+    width: 3vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container-namedesign-register {
+    display: flex;
+    width: 15vw;
+    height: 5vh;
+    margin-right: 2vw;
+    margin-bottom: 2vh;
+}
+
+.container-inner-left-form-input-register::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

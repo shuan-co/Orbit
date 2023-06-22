@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
 // Bootstrap
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
@@ -14,6 +15,7 @@ import "./styles/fonts/fonts.css";
 // Pages
 import Index from "./pages/index/Index.jsx";
 import Login from "./pages/authentication/login/Login.jsx";
+import Register from "./pages/authentication/register/Register";
 import ChatSpace from "./pages/chatspace/ChatSpace.jsx";
 import Routing from "./pages/Routing.jsx";
 
@@ -25,6 +27,9 @@ function App() {
           <Route index element={<Index />} />
           <Route path="login" element={<Login />} />
           <Route path="chatspace" element={<ChatSpace />} />
+          <Route path="signup" element={<Register />}>
+            {" "}
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
