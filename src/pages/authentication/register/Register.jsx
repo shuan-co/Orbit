@@ -1,8 +1,24 @@
 import "./register.css";
-
-// material UI
+import React, { useState } from "react";
 
 function Register() {
+  const [inputType, setInputType] = useState("text");
+  const [inputValue, setInputValue] = useState("");
+
+  const handleFocus = () => {
+    setInputType("date");
+  };
+
+  const handleBlur = (event) => {
+    if (!event.target.value) {
+      setInputType("text");
+      setInputValue("Birthday");
+    }
+  };
+
+  const handleDateChange = (event) => {
+    setInputValue(event.target.value);
+  };
   return (
     <>
       <div id="container-register">
@@ -30,15 +46,17 @@ function Register() {
         <div id="container-inner-register">
           <div id="container-inner-left-register">
             <div id="container-inner-left-form-register">
-              <p id="container-inner-left-form-header-register">
-                CREATE ACCOUNT
-              </p>
+              <span id="container-inner-left-form-header-register">
+                CREATE ACCOUNT &
+              </span>
               <h1 id="container-inner-left-form-main-register">
                 Reach for the stars.
               </h1>
               <p id="contaner-inner-left-form-sub-register">
                 Already a Member?{" "}
-                <span style={{ color: "SkyBlue" }}>Log in</span>
+                <a href="/login" style={{ textDecoration: "none" }}>
+                  <span style={{ color: "SkyBlue" }}>Log in</span>
+                </a>
               </p>
               <form action="">
                 <div id="form-container-register">
@@ -54,6 +72,7 @@ function Register() {
                         className="container-inner-left-form-input-register"
                         placeholder="First Name"
                         type="text"
+                        required="true"
                       />
                     </div>
                     <div className="form-container-namedesign-register">
@@ -67,6 +86,7 @@ function Register() {
                         className="container-inner-left-form-input-register"
                         placeholder="Last Name"
                         type="text"
+                        required="true"
                       />
                     </div>
                   </div>
@@ -93,26 +113,50 @@ function Register() {
                       </div>
                       <input
                         className="container-inner-left-form-input-register"
-                        onFocus={(event) => (event.target.type = "date")}
-                        onBlur={(event) => {
-                          if (!event.target.value) {
-                            event.target.type = "text";
-                            event.target.value = "Birthday";
-                          }
-                        }}
-                        type="date"
+                        placeholder="Birthday"
+                        type={inputType}
+                        value={inputValue}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        onChange={handleDateChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-container-emaildesign-register">
+                    <div id="form-container-icon-register">
+                      <i
+                        class="bi bi-envelope-fill"
+                        style={{ color: "white", fontSize: "1.5vw" }}
+                      ></i>
+                    </div>
+                    <input
+                      className="container-inner-left-form-input-register"
+                      placeholder="asampleofaverylongemail@gmail.com"
+                      type="email"
+                      required="true"
+                    />
+                  </div>
+                  <div style={{ display: "flex" }}>
+                    <div className="form-container-emaildesign-register">
+                      <div id="form-container-icon-register">
+                        <i
+                          class="bi bi-shield-fill-check"
+                          style={{ color: "white", fontSize: "1.5vw" }}
+                        ></i>
+                      </div>
+                      <input
+                        className="container-inner-left-form-input-register"
+                        minLength={8}
+                        placeholder="Password"
+                        type="password"
+                        required="true"
                       />
                     </div>
                   </div>
                   <input
-                    className="container-inner-left-form-input-register"
-                    type="email"
+                    id="container-inner-left-form-submit-register"
+                    type="submit"
                   />
-                  <input
-                    className="container-inner-left-form-input-register"
-                    type="password"
-                  />
-                  <input type="submit" />
                 </div>
               </form>
             </div>
