@@ -57,7 +57,7 @@ function loadContent(page) {
   } else if (page === 'profile') {
     // Get the current user's username
     //const currentUser = localStorage.getItem('currentUser');
-    const currentUser = 'User1';
+    const currentUser = 'Himeko';
 
     // Display the current user's profile
     showProfile(currentUser);
@@ -99,6 +99,7 @@ function loadContent(page) {
     }
   }
 }
+
 
 function saveUsers() {
   localStorage.setItem('users', JSON.stringify(users));
@@ -150,9 +151,9 @@ loadData();
 
 // Hardcoded hashtags
 const hardcodedHashtags = {
-  '#hashtag1': 5,
-  '#hashtag2': 3,
-  '#hashtag3': 2
+  '#kafkabanner': 5,
+  '#stellaronhunted': 3,
+  '#allaboard': 2
 };
 
 // Update the hashtags variable with the hardcoded values
@@ -162,58 +163,42 @@ hashtags = hardcodedHashtags;
 // Hardcoded users and posts
 const hardcodedUsers = [
   {
-    username: 'User1',
+    username: 'Himeko',
     profilePictureUrl: 'himeko.jpg',
     posts: [
-      { title: 'Post1', text: 'This is post 1' },
-      { title: 'Post2', text: 'This is post 2' },
-      { title: 'Post3', text: 'This is post 3' },
-      { title: 'Post4', text: 'This is post 4' },
-      { title: 'Post5', text: 'This is post 5' }
+      { PostId: 1, title: 'I got a new profile picture', text: 'What do you guys think?', media: [
+        { url: 'himeko.jpg', type: 'image' },
+      ] }
     ]
   },
   {
-    username: 'User2',
+    username: 'Seele',
     profilePictureUrl: 'seele.png',
     posts: [
-      { title: 'Post1', text: 'This is post 1' },
-      { title: 'Post2', text: 'This is post 2' },
-      { title: 'Post3', text: 'This is post 3' },
-      { title: 'Post4', text: 'This is post 4' },
-      { title: 'Post5', text: 'This is post 5' }
+      { PostId: 2, title: 'Looking for book recommendations', text: 'Bronya is trying to make me read but all of the books I have are so boring...' }
     ]
   },
   {
-    username: 'User3',
+    username: 'Kafka',
     profilePictureUrl: 'kafka.jpg',
     posts: [
-      { title: 'Post1', text: 'This is post 1' },
-      { title: 'Post2', text: 'This is post 2' },
-      { title: 'Post3', text: 'This is post 3' },
-      { title: 'Post4', text: 'This is post 4' },
-      { title: 'Post5', text: 'This is post 5' }
+      { PostId: 3, title: 'Cool Space Dump', text: 'Hey astral expressers, I think I found your ships debris', media: [
+        { url: 'background.mp4', type: 'video' },
+      ] }
     ]
   },
   {
-    username: 'User4',
+    username: 'Serval',
     profilePictureUrl: 'serval.jpg',
     posts: [
-      { title: 'Post1', text: 'This is post 1' },
-      { title: 'Post2', text: 'This is post 2' },
-      { title: 'Post3', text: 'This is post 3' },
-      { title: 'Post4', text: 'This is post 4' },
-      { title: 'Post5', text: 'This is post 5' }
+      { PostId: 4, title: 'Concert Coming Up!', text: 'Hope to see all of you there soon!' }
     ]
   },
   {
-    username: 'User5',
+    username: 'Natasha',
     profilePictureUrl: 'natasha.png',
     posts: [
-      { title: 'Post1', text: 'This is post 1' },
-      { title: 'Post2', text: 'This is post 2' },
-      { title: 'Post3', text: 'This is post 3' },
-      { title: 'Post4', text: 'This is post 4' },
-      { title: 'Post5', text: 'This is post 5' }
+      { PostId: 5, title: 'All the kids are so healthy now', text: 'Belobog is really turning around, Im so proud' }
     ]
   }
 ];
@@ -223,47 +208,32 @@ users = hardcodedUsers;
 
 // Hardcoded replies
 const hardcodedReplies = {
-  '0': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
-  ],
   '1': [
-    { text: 'This is a reply to post 2', author: 'User4' },
-    { text: 'This is another reply to post 2', author: 'User3' }
+    { text: 'Wow, beautiful', author: 'Seele' },
+    { text: 'Ugly.', author: 'Kafka' }
+  ],
+  '2': [
+    { text: 'I like "The Darkness Outside Us" by eliot screfer!', author: 'Serval' },
+    { text: 'Hmmm... I like that youre taking an interest in books. try out, “Ask An Astronaut: My Guide to Life in Space” by Tim Peake', author: 'Natasha' }
+  ],
+  '3': [
+    { text: 'What does this even mean', author: 'Seele' },
+    { text: 'You looking to start a fight?', author: 'Himeko' }
   ],
   '4': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
+    { text: 'WOAH! Ill definitely be there', author: 'Seele' },
+    { text: 'Should I call in my fellow hunters to join as well?', author: 'Kafka' }
   ],
-  '7': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
-  ],
-  '9': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
-  ],
-  '11': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
-  ],
-  '12': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
-  ],
-  '15': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
-  ],
-  '17': [
-    { text: 'This is a reply to post 1', author: 'User2' },
-    { text: 'This is another reply to post 1', author: 'User3' }
-  ],
+  '5': [
+    { text: 'Indeed! were so excited to see where you guys will be taking belobog moving forward', author: 'Himeko' },
+    { text: 'Maybe we can change that :)', author: 'Kafka' }
+  ]
 };
 
 replies = hardcodedReplies;
 
 console.log(users);
+loadContent('home');
 
 // Check if there is a current user when the page loads
 if (localStorage.getItem('currentUser')) {
@@ -373,8 +343,6 @@ function showHardcodedNotificationType(type) {
   content.innerHTML = notificationsHTML;
 }
 
-loadContent(home);
-
 function submitPost(event) {
   event.preventDefault();
 
@@ -386,7 +354,7 @@ function submitPost(event) {
   const postMediaFiles = postMediaElement.files;
 
   // Get the current user's username
-  const currentUser = 'User1';
+  const currentUser = 'Himeko';
 
   // Add the new post to the current user's posts
   let user = users.find(user => user.username === currentUser);
@@ -491,7 +459,7 @@ function showProfile(username) {
 
         // Only display the Delete button for posts authored by the current user
         let deleteButton = '';
-        const currentUser = 'User1';
+        const currentUser = 'Himeko';
         if (username === currentUser) {
           deleteButton = `<button onclick="deletePost(${i})" class="btn btn-danger">Delete</button>`;
         }
@@ -575,7 +543,7 @@ function showPosts() {
   let postsHTML = '';
 
   // Get the current user's username
-  const currentUser = 'User1';
+  const currentUser = 'Himeko';
 
   // Generate HTML for each post
   if (users.length > 0) {
@@ -723,7 +691,7 @@ function closePostForm() {
 
 function deletePost(postId) {
   // Get the current user's username
-  const currentUser = 'User1';
+  const currentUser = 'Himeko';
 
   // Find the current user in the users array
   let userIndex = users.findIndex(user => user.username === currentUser);
@@ -753,7 +721,7 @@ function submitReply(event) {
   const postAuthor = document.querySelector('#cardModal .modal-content').getAttribute('data-username');
   const postId = document.querySelector('#cardModal .modal-content').getAttribute('data-post-id');
   const parentReplyId = document.querySelector('#cardModal .modal-content').getAttribute('data-reply-id');
-  const currentUser = 'User1';
+  const currentUser = 'Himeko';
   const replyTextElement = document.getElementById('reply-text');
   const replyText = replyTextElement.value;
 
@@ -897,7 +865,7 @@ function updateUserProfile(username) {
   }
 }
 
-updateUserProfile('User1');
+updateUserProfile('Himeko');
 
 
 // Add click event listener to the like button
@@ -906,7 +874,7 @@ likeButton.addEventListener('click', function(event) {
   // Get the current post ID from the modal
   const postId = document.querySelector('#cardModal .modal-content').getAttribute('data-post-id');
 
-  const currentUser = 'User1';
+  const currentUser = 'Himeko';
 
   // Increment the like count for the current post
   if (!likes[postId]) {
