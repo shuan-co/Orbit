@@ -1,15 +1,22 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./login.css";
 
-import React from "react";
-
-
-const kafka = ["kafka@gmail.com", "kafka123"]
-const himeko = ["himeko@gmail.com", "himeko12"]
-const seele = ["seele@gmail.com", "seele123"]
-const serval = ["serval@gmail.com", "serval12"]
-const natasha = ["natasha@gmail.com", "natasha1"]
+const kafka = ["kafka@gmail.com", "kafka123"];
+const himeko = ["himeko@gmail.com", "himeko12"];
+const seele = ["seele@gmail.com", "seele123"];
+const serval = ["serval@gmail.com", "serval12"];
+const natasha = ["natasha@gmail.com", "natasha1"];
 
 function Login() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/chatspace/${event.target.elements.gmail.value}`);
+  };
+
   return (
     <>
       <div id="container-login">
@@ -48,7 +55,10 @@ function Login() {
               <p id="container-auth-right-lower-login">
                 What are your plans today, traveler?
               </p>
-              <form id="container-auth-right-form-login" action="">
+              <form
+                id="container-auth-right-form-login"
+                onSubmit={handleSubmit}
+              >
                 <label
                   id="container-auth-right-label-login"
                   htmlFor="container-auth-right-email-login"
@@ -57,7 +67,7 @@ function Login() {
                 </label>
                 <input
                   type="email"
-                  name=""
+                  name="gmail"
                   className="container-auth-right-input-login"
                   id="container-auth-right-email-login"
                   placeholder="sample@gmail.com"

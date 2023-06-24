@@ -1,20 +1,16 @@
 import React from "react";
 import "./friendsbox.css";
 
-function FriendsBox({ onClick }) {
+function FriendsBox({ onClick, name, picture }) {
   const handleClick = () => {
-    onClick(); // Invoke the onClick function passed as a prop
+    onClick(name); // Invoke the onClick function passed as a prop
   };
 
   return (
     <>
       <div id="container-friendsbox" onClick={handleClick}>
-        <img
-          id="friends-icon-friendsbox"
-          src="./chatspace/usericontest.jpg"
-          alt=""
-        />
-        <span id="friends-username-friendsbox">Seele</span>
+        <img id="friends-icon-friendsbox" src={picture} alt="" />
+        <span id="friends-username-friendsbox">{name}</span>
         <span id="friends-direction-friendsbox">&gt;</span>
       </div>
     </>

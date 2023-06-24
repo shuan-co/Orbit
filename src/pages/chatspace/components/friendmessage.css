@@ -1,26 +1,25 @@
 #container-message-FriendMessage {
-    width: 50%;
+    width: 100%;
     height: auto;
     display: flex;
     margin: 0.5vw;
-        margin-left: 3vw;
     margin-top: 2.5vh;
+    margin-left: 2.5vw;
+    justify-content: flex-start;
 }
 
 #container-message-FriendMessage-sender {
-    width: 50%;
-        height: auto;
-        display: flex;
-        margin: 0.5vw;
-        margin-right: 3vw;
-    margin-left: auto;
+    width: 95%;
+    height: auto;
+    display: flex;
+    margin: 0.5vw;
     margin-top: 2.5vh;
+    justify-content: flex-end;
 }
 
-
 #message-icon-FriendMessage {
-    width: 3.8vw;
-    height: 7vh;
+    width: 3.5vw;
+    height: 6.5vh;
     border-radius: 50%;
     margin-right: 0.5vw;
 }
@@ -65,6 +64,8 @@
     border-radius: 0 1vw 1vw 1vw;
     margin: 0;
     padding: 0.5vw;
+    max-width: 30vw;
+        word-wrap: break-word;
 }
 
 #message-chatbubble-FriendMessage-user {
@@ -74,6 +75,9 @@
     border-radius: 1vw 0vw 1vw 1vw;
     margin: 0;
     padding: 0.5vw;
+    margin-left: auto;
+    max-width: 30vw;
+        word-wrap: break-word;
 }
 
 #message-sent-FriendMessage {

@@ -1,4 +1,4 @@
-import { createRoot } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
@@ -26,7 +26,7 @@ function App() {
         <Route path="/" element={<Routing />}>
           <Route index element={<Index />} />
           <Route path="login" element={<Login />} />
-          <Route path="chatspace" element={<ChatSpace />} />
+          <Route path="chatspace/:gmail" element={<ChatSpace />} />
           <Route path="signup" element={<Register />}>
             {" "}
           </Route>
