@@ -2,6 +2,13 @@ import "./login.css";
 
 import React from "react";
 
+
+const kafka = ["kafka@gmail.com", "kafka123"]
+const himeko = ["himeko@gmail.com", "himeko12"]
+const seele = ["seele@gmail.com", "seele123"]
+const serval = ["serval@gmail.com", "serval12"]
+const natasha = ["natasha@gmail.com", "natasha1"]
+
 function Login() {
   return (
     <>
@@ -54,6 +61,7 @@ function Login() {
                   className="container-auth-right-input-login"
                   id="container-auth-right-email-login"
                   placeholder="sample@gmail.com"
+                  required="true"
                 />
                 <label
                   id="container-auth-right-label-login"
@@ -67,6 +75,8 @@ function Login() {
                   placeholder="Minimum 8 characters"
                   className="container-auth-right-input-login"
                   id="container-auth-right-password-login"
+                  required="true"
+                  min={8}
                 />
                 <input id="container-auth-right-submit-login" type="submit" />
               </form>
