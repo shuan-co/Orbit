@@ -46,12 +46,9 @@ function Index() {
       <div className="stage">
         <Parallax pages={9} ref={parallaxContainerRef}>
           {/* FLOATING ELEMENTS */}
-          {/* <ParallaxLayer speed={0.5} sticky={{ start: 2, end: 2.5 }}>
-            <img src="./global/nebula/5.png" alt="" />
-          </ParallaxLayer> */}
 
           {/* MAIN PARALLAX LAYERS */}
-          <ParallaxLayer>
+          <ParallaxLayer offset={0}>
             <Opening />
           </ParallaxLayer>
           <ParallaxLayer offset={1}>

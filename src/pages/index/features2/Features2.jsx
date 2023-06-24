@@ -36,6 +36,9 @@ function Features2() {
 
   return (
     <>
+      <img id="nebula7-index" src="./global/nebula/11.png" alt="" />
+      <img id="nebula8-index" src="./global/nebula/12.png" alt="" />
+      <img id="nebula9-index" src="./global/nebula/13.png" alt="" />
       <div id="container-features2">
         <div id="card-features2">
           <span></span>

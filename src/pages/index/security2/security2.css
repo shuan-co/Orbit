@@ -1,3 +1,5 @@
+
+
 #container-security2 {
     display: flex;
     justify-content: center;
@@ -10,8 +12,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    background-color: black;
+
 }
 
 #container-security2 #card-security2 {
@@ -132,4 +133,31 @@
 
     outline: none;
     border: none;
+}
+
+#nebula10-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    top: 10vh;
+    left: -15vw;
+    opacity: 0.6;
+}
+
+#nebula11-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    right: -27vh;
+    bottom: 0vw;
+    opacity: 0.6;
+}
+
+#nebula12-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    right: -20vh;
+    top: -10vw;
+    opacity: 0.6;
 }

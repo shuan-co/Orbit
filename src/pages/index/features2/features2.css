@@ -1,3 +1,30 @@
+#nebula7-index {
+    width: 50vw;
+    height: 80vh;
+    position: absolute;
+    top: -8vh;
+    left: -20vw;
+    opacity: 0.6;
+}
+
+#nebula8-index {
+    width: 25vw;
+    height: 45vh;
+    position: absolute;
+    right: 60vh;
+    bottom: 0vw;
+    opacity: 0.6;
+}
+
+#nebula9-index {
+    width: 50vw;
+    height: 80vh;
+    position: absolute;
+    right: -15vh;
+    top: -15vw;
+    opacity: 0.6;
+}
+
 #container-features2 {
     display: flex;
     justify-content: center;
@@ -11,7 +38,6 @@
         height: 100vh;
         overflow: hidden;
     gap: 2vw;
-    background-color: black;
 }
 
 #container-features2 #card-features2 {

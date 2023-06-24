@@ -2,7 +2,10 @@ import "./navigationbar.css";
 function NavigationBar() {
   return (
     <>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
+        data-bs-theme="dark"
+      >
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
             Orbit
@@ -20,14 +23,11 @@ function NavigationBar() {
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="/signup">
+              <a class="nav-link" aria-current="page" href="/signup">
                 Sign Up
               </a>
               <a class="nav-link" href="/Login">
                 Login
-              </a>
-              <a class="nav-link" href="../../../OrbitHtml.html">
-                Homepage
               </a>
             </div>
           </div>

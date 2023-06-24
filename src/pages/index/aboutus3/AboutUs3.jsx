@@ -10,6 +10,9 @@ function AboutUs3() {
           src="./index/aboutus/const.png"
           alt=""
         />
+        <img id="nebula4-index" src="./global/nebula/8.png" alt="" />
+        <img id="nebula5-index" src="./global/nebula/9.png" alt="" />
+        <img id="nebula6-index" src="./global/nebula/10.png" alt="" />
         <h4 id="maintext-aboutus3">
           "With Orbit, we aim to cater to the diverse needs and preferences of
           our users. We believe in the power of customization, empowering you to

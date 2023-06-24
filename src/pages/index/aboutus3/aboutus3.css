@@ -11,8 +11,8 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    background-color: black;
+
+
 }
 
 #const-aboutus3 {
@@ -27,4 +27,31 @@
     font-size: 1.5vw;
     width: 85%;
     margin-bottom: 5vh;
+}
+
+#nebula4-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    top: -8vh;
+    left: 5vw;
+    opacity: 0.6;
+}
+
+#nebula5-index {
+    width: 25vw;
+    height: 45vh;
+    position: absolute;
+    left: 70vh;
+    bottom: 0vw;
+    opacity: 0.6;
+}
+
+#nebula6-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    right: -15vh;
+    top: 15vw;
+    opacity: 0.6;
 }

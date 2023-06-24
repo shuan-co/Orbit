@@ -1,0 +1,27 @@
+#spaceship-index {
+    width: 12vw;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 15vh;
+}
+
+#ufo-index {
+    width: 12vw;
+    height: auto;
+    position: absolute;
+    left: 0;
+    top: 25vh;
+}
+
+#satellite-index {
+    position: absolute;
+    width: 12vw;
+    right: 5vw;
+}
+
+#asteroid-index {
+    position: absolute;
+    width: 12vw;
+    right: 5vw;
+}

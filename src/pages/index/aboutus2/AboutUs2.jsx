@@ -1,5 +1,4 @@
 import "./aboutus2.css";
-
 function AboutUs2() {
   return (
     <>
@@ -10,6 +9,9 @@ function AboutUs2() {
           src="./index/aboutus/planet2.png"
           alt=""
         />
+        <img id="nebula1-index" src="./global/nebula/5.png" alt="" />
+        <img id="nebula2-index" src="./global/nebula/6.png" alt="" />
+        <img id="nebula3-index" src="./global/nebula/7.png" alt="" />
         <h4 id="maintext-aboutus2">
           "Orbit, a groundbreaking social media platform designed to
           revolutionize the way you connect, engage, and express yourself

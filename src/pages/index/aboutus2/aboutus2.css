@@ -11,8 +11,6 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    background-color: black;
 }
 
 #maintext-aboutus2 {
@@ -27,4 +25,31 @@
     width: 20vw;
     height: 40vh;
     margin-right: 2.6vw;
+}
+
+#nebula1-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    top: 10vh;
+    left: -5vw;
+    opacity: 0.6;
+}
+
+#nebula2-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    right: 10vh;
+    bottom: -10vw;
+    opacity: 0.6;
+}
+
+#nebula3-index {
+    width: 30vw;
+    height: 60vh;
+    position: absolute;
+    right: 10vh;
+    top: -10vw;
+    opacity: 0.6;
 }

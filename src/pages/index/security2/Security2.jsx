@@ -83,6 +83,9 @@ function Security2() {
             <button onClick={encryptionOpen}>Read more</button>
           </div>
         </div>
+        <img id="nebula10-index" src="./global/nebula/12.png" alt="" />
+        <img id="nebula11-index" src="./global/nebula/13.png" alt="" />
+        <img id="nebula12-index" src="./global/nebula/5.png" alt="" />
       </div>
       <Modal open={af2} onClose={af2Close}>
         <Box

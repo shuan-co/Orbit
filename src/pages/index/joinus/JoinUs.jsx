@@ -20,9 +20,10 @@ function JoinUs() {
             this world! Embrace the oddity, embrace the Orbit, and let's launch
             into a universe of digital delight.
           </p>
-          <button id="button-joinus" role="button">
+          <br />
+          <a href="/signup" id="button-joinus">
             JOIN ORBIT
-          </button>
+          </a>
         </div>
         <div id="container-right-joinus">
           <img id="radial-joinus" src="./index/joinus/radial.png" alt="" />

@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Routing />}>
           <Route index element={<Index />} />
           <Route path="login" element={<Login />} />
-          <Route path="chatspace/:gmail" element={<ChatSpace />} />
+          <Route path="chatspace" element={<ChatSpace />} />
           <Route path="signup" element={<Register />}>
             {" "}
           </Route>
