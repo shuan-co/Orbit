@@ -1,5 +1,4 @@
 import "./navigationbar.css";
-
 function NavigationBar() {
   return (
     <>
@@ -26,6 +25,9 @@ function NavigationBar() {
               </a>
               <a class="nav-link" href="/Login">
                 Login
+              </a>
+              <a class="nav-link" href="../../../OrbitHtml.html">
+                Homepage
               </a>
             </div>
           </div>

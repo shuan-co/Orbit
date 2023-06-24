@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
+import NavigationBar from "./components/navigation/NavigationBar";
 
 // Bootstrap
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -38,6 +39,7 @@ function App() {
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <NavigationBar></NavigationBar>
     <App />
   </React.StrictMode>
 );
