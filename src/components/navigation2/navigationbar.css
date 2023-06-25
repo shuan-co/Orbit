@@ -1,0 +1,375 @@
+#body-navigationbar{
+        display: block;
+        background: transparent;
+        z-index: 9999;
+}
+
+@font-face {
+        font-family: 'Tomorrow-Light';
+        src: url('../../styles/fonts/Tomorrow-Light.ttf') format('truetype');
+        /* Additional font properties (optional) */
+        font-weight: normal;
+        font-style: normal;
+}
+
+@font-face {
+        font-family: 'Tomorrow-Thin';
+        src: url('../../styles/fonts/Tomorrow-Thin.ttf') format('truetype');
+        /* Additional font properties (optional) */
+        font-weight: normal;
+        font-style: normal;
+}
+
+.nav_container {
+        width: 30%;
+        height: 100%;
+        min-height: 100vh;
+        z-index: 9999;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+        float: right;
+
+        animation: fadeIn 0.75s;
+}
+
+@keyframes fadeIn {
+        from{
+                opacity: 0;
+        }
+
+        to{
+                opacity: 1;
+        }
+}
+
+@keyframes fadeOut {
+        from{
+                opacity: 1;
+        }
+
+        to{
+                opacity: 0;
+        }
+}
+
+#nav_topbar{
+        width: 87.5%;
+        height: 20%;
+        min-height: 20vh;
+
+        padding: 5%;
+
+        position: relative;
+
+        background-image: linear-gradient(to right, #000000, #21201e, #574a39, #806138, #ab7630, #cf821b);
+
+}
+
+#topb_tophalf{
+        width: 80%;
+        height: 45%;
+
+        font-weight: bold;
+        font-family: 'Tomorrow-Light', sans-serif;
+        font-size: 15px;
+
+        color: white;
+}
+
+#profileimg_container{
+        height: 90%;
+        padding: 0%;
+
+        float:left; display:inline; width: 15%;
+        border-radius: 50%;
+
+        outline-style: solid;
+        color: whitesmoke;
+}
+
+#profile_image{
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+}
+
+#username_container{
+        height: 40%;
+
+        padding: 0%;
+
+        float:left; display:inline; width: 60%;
+
+        font-size: 22.5px;
+        color: white;
+}
+
+#editp_container{
+        height: 40%;
+        padding: 0%;
+
+        float:right; display:inline; width: 20%;
+        outline-style: solid;
+        color: blueviolet;
+}
+
+#profile_edit{
+        height: 100%;
+        width: 100%;
+}
+
+#tagline_container{
+        height: 35%;
+        padding: 0%;
+
+        float:left; display:inline; width: 80%;
+}
+
+.userinfo{
+        padding-left: 5%;
+}
+
+#topb_bothalf{
+        width: 80%;
+        height: 45%;
+
+}
+
+#bio_container{
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(0, 0, 0, 0.5);
+}
+
+#bio{
+        padding: 10px;
+        color: gray;
+        font-family: 'Tomorrow-Light', sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+}
+
+#sidebar_container{
+        width: 12.5%;
+        height: 100%;
+        min-height: 100vh;
+
+        background-color: black;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        display: grid;
+        place-items: center;
+}
+
+#centering{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+}
+
+#sidebar{
+        width: 60px;
+        height: 700px;
+        border-radius: 20px;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        outline-style: solid;
+        outline-color: gray;
+}
+
+#exitbutt_container{
+        width: 50px;
+        height: 50px;
+
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 10px;
+}
+
+#exit_button{
+        width: 50px;
+        height: 50px;
+        border: none;
+        outline: none;
+
+        background-image: url('./assets/exit_icon.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: transparent;
+}
+
+#nav_itemsspane{
+        width: 87.5%;
+        height: 74.5%;
+
+        background-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgba(33, 32, 30, 0.5));
+
+        display: grid;
+        place-items: center;
+
+}
+
+#dest_container{
+        width: 90%;
+        height: 95%;
+
+        padding-left: 10px;
+        padding-right: 10px;
+
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+}
+
+.itembox{
+        width: 120px;
+        height: 120px;
+
+        margin: 10px;
+        outline-style: solid;
+        outline-color: #a6a05e;
+        position: relative;
+}
+
+.nav_label{
+        width: 100%;
+        height: 20%;
+
+        position: absolute;
+        bottom: 0;
+        background-color: hsla(0, 100%, 30%, opacity);
+}
+
+.nav_labeltext{
+        color: white;
+        font-family: 'Tomorrow-Thin', sans-serif;
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+
+        margin-top: 2px;
+        margin-bottom: 0px;
+}
+
+.nav_button{
+        width: 100%;
+        height: 80%;
+        display: grid;
+        place-items: center;
+}
+
+#main_button{
+        width: 100%;
+        height: 100%;
+
+        background-image: url('./assets/mainmenu_logo.png');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: center;
+}
+
+#chat_button{
+        width: 100%;
+        height: 100%;
+
+        background-image: url('./assets/chat_logo.png');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: center;
+}
+
+#home_button{
+        width: 100%;
+        height: 100%;
+
+        background-color: transparent;
+        background-image: url('./assets/home_logo.png');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: center;
+}
+
+#saved_button{
+        width: 100%;
+        height: 100%;
+
+        background-color: transparent;
+        background-image: url('./assets/bookmark_logo.png');
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: center;
+}
+
+.sidebar_icon{
+        width: 40px;
+        height: 40px;
+
+        align-self: center;
+        margin: 10px;
+}
+
+.sidebar_button{
+        width: 40px;
+        height: 40px;
+
+        align-self: center;
+        margin-top: 60px;
+}
+
+#emails{
+        height: 100%;
+        width: 100%;
+
+
+        background-image: url('./assets/mail_icon.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: transparent;
+}
+
+#events{
+        height: 100%;
+        width: 100%;
+
+
+        background-image: url('./assets/calendar_icon.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: transparent;
+}
+
+#settings{
+        height: 100%;
+        width: 100%;
+
+
+        background-image: url('./assets/settings_icon.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: transparent;
+}

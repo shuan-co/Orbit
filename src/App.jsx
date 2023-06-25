@@ -19,6 +19,7 @@ import Login from "./pages/authentication/login/Login.jsx";
 import Register from "./pages/authentication/register/Register";
 import ChatSpace from "./pages/chatspace/ChatSpace.jsx";
 import Routing from "./pages/Routing.jsx";
+import Savedposts from "./pages/saved_videos/Savedposts";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="signup" element={<Register />}>
             {" "}
           </Route>
+          <Route path="savedvideos" element={<Savedposts />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,288 @@
+#body-savedposts {
+        display: block;
+        background: url('./saved_videos/icons/night_sky_black.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: blur(50);
+}
+
+#viewer_window{
+        height: 50vw;
+        width: 90vw;
+
+        position: absolute;
+        top: 52vh;
+
+
+        background-color: gray;
+
+        z-index: 99;
+}
+
+.center{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+}
+
+#post_box{
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+}
+#poster{
+        height: 20%;
+        width: 100%;
+
+        padding: 15px;
+
+        background-image: linear-gradient(to right, #000000, #21201e, #574a39, #806138, #ab7630, #cf821b);
+        order: 3;
+
+        display: flex;
+        bottom: 0;
+
+}
+
+#profile_frame{
+        height: 100%;
+        width: 10%;
+
+        outline-style: solid;
+        outline-color: #a6a05e;
+
+        border-radius: 50%;
+        flex: 0 0 10%;
+        margin-right: 30px;
+
+}
+
+#profile_img{
+        height: 100%;
+        width: 100%;
+
+        border-radius: 50%;
+}
+
+#user_info{
+        height: 100%;
+        width: 40%;
+
+        flex: 0 0 50%;
+
+        margin-right: 30px;
+}
+
+#user_name{
+        width: 100%;
+        height: 70%;
+
+        font-weight: bold;
+        font-family: 'Tomorrow-Light', sans-serif;
+        font-size: 60px;
+
+        color: white;
+
+        display: inline-block;
+}
+
+#user_caption{
+        width: 100%;
+        height: 30%;
+
+        font-family: 'Tomorrow-Light', sans-serif;
+        font-size: 20px;
+
+        color: white;
+
+        display: inline-block;
+}
+
+#viewer_options{
+        height: 80%;
+
+        outline-style: solid;
+        outline-color: #a6a05e;
+        flex: 1;
+
+        display: flex;
+        justify-content: center;
+}
+
+#like_box{
+        flex: 0 0 20%;
+        z-index: 9;
+}
+
+#dislike_box{
+        flex: 0 0 20%;
+        z-index: 9;
+}
+
+#comment_box{
+        flex: 0 0 20%;
+        z-index: 9;
+}
+
+#share_box{
+        flex: 0 0 20%;
+        z-index: 9;
+}
+
+#report_box{
+        flex: 0 0 20%;
+        z-index: 9;
+}
+
+#content{
+        /*height: 79%;
+        width: 100%;*/
+
+        width: 100%;
+        height: 100%;
+        /*padding-bottom: 56.25%;*/
+        position: relative;
+
+        top: 0;
+        order: 1;
+}
+
+.react-player{
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16/9; /* Adjust the aspect ratio as needed */
+}
+
+.react-player > div {
+        position: absolute;
+}
+
+#left_arrow_box{
+        height: 100%;
+        width: 20%;
+
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        z-index: 9;
+}
+
+#left_arrow{
+        height: 400px;
+        width: 100%;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+}
+
+#right_arrow_box{
+        height: 100%;
+        width: 20%;
+
+        position: absolute;
+
+        right: 0;
+        top: 50%;
+        transform: translate(50%, -50%);
+}
+
+#right_arrow{
+        height: 400px;
+        width: 100%;
+
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+}
+
+#right_button{
+        height: 100%;
+        width: 100%;
+        z-index: 9;
+
+        background-image: url('./saved_videos/icons/right_arrowicon.png');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center;
+        opacity: 0.5;
+
+        border: none;
+}
+
+#left_button{
+        height: 100%;
+        width: 100%;
+        z-index: 9;
+
+        background-image: url('./saved_videos/icons/left_arrowicon.png');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center;
+        opacity: 0.5;
+
+        border: none;
+}
+
+#like{
+        width: 100%;
+        height: 100%;
+        background-image: url('./saved_videos/icons/like_icon.png');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center;
+}
+
+#dislike{
+        width: 100%;
+        height: 100%;
+        background-image: url('./saved_videos/icons/dislike_icon.png');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center;
+}
+
+#comment{
+        width: 100%;
+        height: 100%;
+        background-image: url('./saved_videos/icons/comment_icon.png');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center;
+}
+
+#share{
+        width: 100%;
+        height: 100%;
+        background-image: url('./saved_videos/icons/share_icon.png');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center;
+}
+
+#report{
+        width: 100%;
+        height: 100%;
+        background-image: url('./saved_videos/icons/report_icon.png');
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center;
+}
