@@ -2,6 +2,8 @@ import "./chatspace.css";
 import React, { useState } from "react";
 import FriendsBox from "./components/FriendsBox";
 import FriendMessage from "./components/FriendMessage";
+import NavigationBar from "../../components/navigation2/NavigationBar";
+import BackgroundChatSpace from "./background/BackgroundChatSpace";
 
 function ChatSpace() {
   const [chatboxid, setChatBoxId] = useState(true);
@@ -323,6 +325,8 @@ function ChatSpace() {
   return (
     <>
       <div id="stage-chatspace">
+        <BackgroundChatSpace />
+        <NavigationBar />
         <div id="outer-container-chatspace">
           <div id="inner-container-header-chatspace">
             <img id="icon-chatspace" src="/chatspace/icon.png" />

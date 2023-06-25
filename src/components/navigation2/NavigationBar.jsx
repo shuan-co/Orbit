@@ -117,10 +117,10 @@ const NavigationBar = () => {
                 </span>
                 <span className="itembox">
                   <div className="nav_button">
-                    <button id="saved_button" /> {/*TODO: Implement routing */}
+                    <a id="saved_button" href="/savedvideos"></a>
                   </div>
                   <div className="nav_label">
-                    <p className="nav_labeltext">Saved Posts</p>
+                    <p className="nav_labeltext">Reels</p>
                   </div>
                 </span>
               </div>
