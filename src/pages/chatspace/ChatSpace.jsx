@@ -5,33 +5,29 @@
   import NavigationBar from "../../components/navigation2/NavigationBar";
   import BackgroundChatSpace from "./background/BackgroundChatSpace";
 
-  // FIREBASE LOGIN TEST
-  import { initializeApp } from 'firebase/app';
+ 
   import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
   import { getFirestore, collection, query, orderBy, limit, getDocs} from "firebase/firestore";
   import { useCollectionData } from "react-firebase-hooks/firestore";
+  import { initializeApp } from 'firebase/app';
 
-  
-
+  // FIREBASE CHAT TEST
   const firebaseConfig = {
-    apiKey: "AIzaSyA5KuVKg7vp6OuIBMYSgbsxWizMZhqKNmw",
-    authDomain: "orbit-90a9a.firebaseapp.com",
-    projectId: "orbit-90a9a",
-    storageBucket: "orbit-90a9a.appspot.com",
-    messagingSenderId: "355762773896",
-    appId: "1:355762773896:web:bd8c63fa6d57499427643d",
-    measurementId: "G-PVEBSYX62E"
-  }
-
+  apiKey: "AIzaSyA5KuVKg7vp6OuIBMYSgbsxWizMZhqKNmw",
+  authDomain: "orbit-90a9a.firebaseapp.com",
+  projectId: "orbit-90a9a",
+  storageBucket: "orbit-90a9a.appspot.com",
+  messagingSenderId: "355762773896",
+  appId: "1:355762773896:web:bd8c63fa6d57499427643d",
+  measurementId: "G-PVEBSYX62E"
+  };
 
   const firebase = initializeApp(firebaseConfig);
   const firestore = getFirestore(firebase);
+  const messageRef = collection(firestore, "messages");
+  const orderedQuery = query(messageRef, orderBy("createdAt"), limit(25));
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-
-      // FIREBASE CHAT TEST
-      const messageRef = collection(firestore, "messages");
-      const orderedQuery = query(messageRef, orderBy("createdAt"), limit(25));
     
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -71,7 +67,7 @@
             <hr />
           </div>
           <div id="content-message-container-chatspace">
-          {messages && messages.map((msg) => (
+          {/* {messages && messages.map((msg) => (
             <FriendMessage
             key={msg.id}
             sender={true}
@@ -79,7 +75,7 @@
             usericon={"/chatspace/seele.png"}
             name={"Seele"}
           />
-          ))}
+          ))} */}
           </div>
           <div id="content-message-sub-chatspace">
             <input
@@ -98,7 +94,7 @@
         <div id="stage-chatspace">
           <BackgroundChatSpace />
           <NavigationBar />
-          <button onClick={signInWithGoogle}>Sign In with Google</button>
+          {/* <button onClick={signInWithGoogle}>Sign In with Google</button> */}
           <div id="outer-container-chatspace">
             <div id="inner-container-header-chatspace">
               <img id="icon-chatspace" src="/chatspace/icon.png" />

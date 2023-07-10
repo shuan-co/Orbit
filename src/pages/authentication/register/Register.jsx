@@ -1,6 +1,67 @@
 import "./register.css";
 import React, { useState } from "react";
 
+// FIREBASE
+// FIREBASE LOGIN TEST
+  import { initializeApp } from 'firebase/app';
+  import { getFirestore } from "firebase/firestore";
+  import { doc, setDoc, Timestamp } from "firebase/firestore"; 
+  
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA5KuVKg7vp6OuIBMYSgbsxWizMZhqKNmw",
+    authDomain: "orbit-90a9a.firebaseapp.com",
+    projectId: "orbit-90a9a",
+    storageBucket: "orbit-90a9a.appspot.com",
+    messagingSenderId: "355762773896",
+    appId: "1:355762773896:web:bd8c63fa6d57499427643d",
+    measurementId: "G-PVEBSYX62E"
+  }
+
+  const firebase = initializeApp(firebaseConfig);
+  // Initialize Cloud Firestore and get a reference to the service
+  const db = getFirestore(firebase);
+
+  import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+  const auth = getAuth();
+  
+  var userUID = null;
+  async function createAccount(email, password) {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    return user.uid;
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    throw error; 
+  }
+}
+
+async function initAccount(event) {
+  event.preventDefault();
+
+  var firstName = document.getElementById("register-firstName").value;
+  var lastName = document.getElementById("register-lastName").value;
+  var gender = document.getElementById("register-gender").value;
+  var birthday = document.getElementById("register-birthday").value;
+
+  var email = document.getElementById("register-email").value;
+  var password = document.getElementById("register-password").value;
+
+  try {
+    var userUID = await createAccount(email, password);
+    var docData = {
+      uid: userUID,
+      firstname: firstName,
+      lastname: lastName,
+      gender: gender,
+      birthday: birthday,
+    };
+    await setDoc(doc(db, userUID, "data"), docData);
+  } catch (error) {
+  }
+}
 function Register() {
   const [inputType, setInputType] = useState("text");
   const [inputValue, setInputValue] = useState("");
@@ -58,7 +119,7 @@ function Register() {
                   <span style={{ color: "SkyBlue" }}>Log in</span>
                 </a>
               </p>
-              <form action="">
+              <form onSubmit={initAccount}>
                 <div id="form-container-register">
                   <div style={{ display: "flex" }}>
                     <div className="form-container-namedesign-register">
@@ -73,6 +134,7 @@ function Register() {
                         placeholder="First Name"
                         type="text"
                         required="true"
+                        id="register-firstName"
                       />
                     </div>
                     <div className="form-container-namedesign-register">
@@ -87,6 +149,7 @@ function Register() {
                         placeholder="Last Name"
                         type="text"
                         required="true"
+                        id="register-lastName"
                       />
                     </div>
                   </div>
@@ -102,6 +165,7 @@ function Register() {
                         className="container-inner-left-form-input-register"
                         placeholder="Gender"
                         type="text"
+                        id="register-gender"
                       />
                     </div>
                     <div className="form-container-namedesign-register">
@@ -119,6 +183,7 @@ function Register() {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         onChange={handleDateChange}
+                        id="register-birthday"
                       />
                     </div>
                   </div>
@@ -134,6 +199,7 @@ function Register() {
                       placeholder="asampleofaverylongemail@gmail.com"
                       type="email"
                       required="true"
+                      id="register-email"
                     />
                   </div>
                   <div style={{ display: "flex" }}>
@@ -150,6 +216,7 @@ function Register() {
                         placeholder="Password"
                         type="password"
                         required="true"
+                        id="register-password"
                       />
                     </div>
                   </div>
