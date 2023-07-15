@@ -1,24 +1,9 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from 'firebase/app';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { config, user } from "../../../Firebase";
 
 import "./login.css";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA5KuVKg7vp6OuIBMYSgbsxWizMZhqKNmw",
-  authDomain: "orbit-90a9a.firebaseapp.com",
-  projectId: "orbit-90a9a",
-  storageBucket: "orbit-90a9a.appspot.com",
-  messagingSenderId: "355762773896",
-  appId: "1:355762773896:web:bd8c63fa6d57499427643d",
-  measurementId: "G-PVEBSYX62E"
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
-
-var user = null;
 
 function Login({ logIn }) {
   const navigate = useNavigate(); // Move useNavigate inside the Login component
@@ -28,12 +13,12 @@ function Login({ logIn }) {
 
     var email = document.getElementById("container-auth-right-email-login").value;
     var password = document.getElementById("container-auth-right-password-login").value;
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(config.auth, email, password)
       .then((userCredential) => {
-        user = userCredential.user;
+        user.authentication = userCredential
+        user.credentials = userCredential.user;
         navigate('/chatspace'); // Use the navigate function here
         logIn();
-        console.log("hello world!");
       })
       .catch((error) => {
         const errorCode = error.code;

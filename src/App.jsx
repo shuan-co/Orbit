@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import NavigationBar from "./components/navigation/NavigationBar";
 
 // Bootstrap
@@ -20,22 +20,6 @@ import Register from "./pages/authentication/register/Register";
 import ChatSpace from "./pages/chatspace/ChatSpace.jsx";
 import Routing from "./pages/Routing.jsx";
 import Savedposts from "./pages/saved_videos/Savedposts";
-
-//firebase
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-const firebaseConfig = {
-    apiKey: "AIzaSyA5KuVKg7vp6OuIBMYSgbsxWizMZhqKNmw",
-    authDomain: "orbit-90a9a.firebaseapp.com",
-    projectId: "orbit-90a9a",
-    storageBucket: "orbit-90a9a.appspot.com",
-    messagingSenderId: "355762773896",
-    appId: "1:355762773896:web:bd8c63fa6d57499427643d",
-    measurementId: "G-PVEBSYX62E"
-  }
-
-
-const firebase = initializeApp(firebaseConfig);
 
 const Protected = ({ isLoggedIn, children }) => {
   console.log(isLoggedIn)
@@ -67,7 +51,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Routing />}>
           <Route index element={<Index />} />
-          <Route path="login" element={<Login logIn={logIn}/>} />
+          <Route path="login" element={<Login logIn={logIn} />} />
           <Route
             path="ChatSpace"
             element={

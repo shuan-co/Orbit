@@ -1,32 +1,15 @@
 import "./register.css";
 import React, { useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
 
-// FIREBASE
-// FIREBASE LOGIN TEST
-  import { initializeApp } from 'firebase/app';
-  import { getFirestore } from "firebase/firestore";
-  import { doc, setDoc, Timestamp } from "firebase/firestore"; 
-  
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyA5KuVKg7vp6OuIBMYSgbsxWizMZhqKNmw",
-    authDomain: "orbit-90a9a.firebaseapp.com",
-    projectId: "orbit-90a9a",
-    storageBucket: "orbit-90a9a.appspot.com",
-    messagingSenderId: "355762773896",
-    appId: "1:355762773896:web:bd8c63fa6d57499427643d",
-    measurementId: "G-PVEBSYX62E"
-  }
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ref, uploadString } from "firebase/storage";
 
-  const firebase = initializeApp(firebaseConfig);
-  // Initialize Cloud Firestore and get a reference to the service
-  const db = getFirestore(firebase);
+import { config, user } from "../../../Firebase"
 
-  import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-  const auth = getAuth();
-  
-  var userUID = null;
-  async function createAccount(email, password) {
+
+async function createAccount(email, password) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
@@ -34,7 +17,7 @@ import React, { useState } from "react";
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    throw error; 
+    throw error;
   }
 }
 
@@ -59,6 +42,11 @@ async function initAccount(event) {
       birthday: birthday,
     };
     await setDoc(doc(db, userUID, "data"), docData);
+    await setDoc(doc(db, userUID, "friends"));
+    const folderPath = `${userUID}`;
+    const folderRef = ref(storage, folderPath);
+    const emptyFileRef = ref(storage, folderPath + ".keep");
+    await uploadString(emptyFileRef, "");
   } catch (error) {
   }
 }
