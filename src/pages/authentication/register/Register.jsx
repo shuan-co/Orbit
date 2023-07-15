@@ -8,6 +8,8 @@ import { ref, uploadString } from "firebase/storage";
 
 import { config, user } from "../../../Firebase"
 
+import { useAuth } from '../../../Global';
+
 
 async function createAccount(email, password) {
   try {
@@ -21,37 +23,39 @@ async function createAccount(email, password) {
   }
 }
 
-async function initAccount(event) {
-  event.preventDefault();
-
-  var firstName = document.getElementById("register-firstName").value;
-  var lastName = document.getElementById("register-lastName").value;
-  var gender = document.getElementById("register-gender").value;
-  var birthday = document.getElementById("register-birthday").value;
-
-  var email = document.getElementById("register-email").value;
-  var password = document.getElementById("register-password").value;
-
-  try {
-    var userUID = await createAccount(email, password);
-    var docData = {
-      uid: userUID,
-      firstname: firstName,
-      lastname: lastName,
-      gender: gender,
-      birthday: birthday,
-    };
-    await setDoc(doc(config.firestore, userUID, "data"), docData);
-    await setDoc(doc(config.firestore, userUID, "friends"), {});
-
-    await ref(config.storage, `${userUID}/`);
-    await uploadString(ref(config.storage, `${userUID}/` + ".keep"), "");
-
-  } catch (error) {
-    console.log(error);
-  }
-}
 function Register() {
+  const { isLoggedIn, logIn, logOut } = useAuth();
+  async function initAccount(event) {
+    event.preventDefault();
+    var firstName = document.getElementById("register-firstName").value;
+    var lastName = document.getElementById("register-lastName").value;
+    var gender = document.getElementById("register-gender").value;
+    var birthday = document.getElementById("register-birthday").value;
+
+    var email = document.getElementById("register-email").value;
+    var password = document.getElementById("register-password").value;
+
+    try {
+      var userUID = await createAccount(email, password);
+      var docData = {
+        uid: userUID,
+        firstname: firstName,
+        lastname: lastName,
+        gender: gender,
+        birthday: birthday,
+      };
+      await setDoc(doc(config.firestore, userUID, "data"), docData);
+      await setDoc(doc(config.firestore, userUID, "friends"), {});
+
+      await ref(config.storage, `${userUID}/`);
+      await uploadString(ref(config.storage, `${userUID}/` + ".keep"), "");
+      logIn();
+      window.location.href = '/homepage';
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const [inputType, setInputType] = useState("text");
   const [inputValue, setInputValue] = useState("");
 
