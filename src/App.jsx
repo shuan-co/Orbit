@@ -21,6 +21,10 @@ import ChatSpace from "./pages/chatspace/ChatSpace.jsx";
 import Routing from "./pages/Routing.jsx";
 import Savedposts from "./pages/saved_videos/Savedposts";
 import { useAuth } from "./Global";
+import Homepage from "./pages/homepage/Homepage";
+import Explore from "./pages/homepage/components/Explore";
+import Notifications from "./pages/homepage/components/Notifications";
+import Profile from "./pages/homepage/components/Profile";
 
 const Protected = ({ isLoggedIn, children }) => {
   console.log(isLoggedIn)
@@ -40,7 +44,40 @@ function App() {
       <Routes>
         <Route path="/" element={<Routing />}>
           <Route index element={<Index />} />
-          <Route path="/login" element={<Login logIn={logIn} />} />
+          <Route path="login" element={<Login logIn={logIn} />} />
+          {/* Protected Routes */}
+          <Route
+            path="homepage"
+            element={
+              <Protected isLoggedIn={isLoggedIn}>
+                <Homepage />
+              </Protected>
+            }
+          />
+          <Route
+            path="explore"
+            element={
+              <Protected isLoggedIn={isLoggedIn}>
+                <Explore />
+              </Protected>
+            }
+          />
+          <Route
+            path="notifications"
+            element={
+              <Protected isLoggedIn={isLoggedIn}>
+                <Notifications />
+              </Protected>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <Protected isLoggedIn={isLoggedIn}>
+                <Profile />
+              </Protected>
+            }
+          />
           <Route
             path="ChatSpace"
             element={

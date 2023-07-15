@@ -12,7 +12,7 @@ import { config, user } from "../../../Firebase"
 async function createAccount(email, password) {
   try {
     user.authentication = await createUserWithEmailAndPassword(config.auth, email, password);
-    user.credentials = userCredential.user;
+    user.credentials = user.authentication.user;
     return user.credentials.uid;
   } catch (error) {
     const errorCode = error.code;
@@ -42,10 +42,13 @@ async function initAccount(event) {
       birthday: birthday,
     };
     await setDoc(doc(config.firestore, userUID, "data"), docData);
-    await setDoc(doc(config.firestore, userUID, "friends"));
-    await ref(config.storage, `${userUID}`);
-    await uploadString(ref(config.storage, `${userUID}` + ".keep"), "");
+    await setDoc(doc(config.firestore, userUID, "friends"), {});
+
+    await ref(config.storage, `${userUID}/`);
+    await uploadString(ref(config.storage, `${userUID}/` + ".keep"), "");
+
   } catch (error) {
+    console.log(error);
   }
 }
 function Register() {

@@ -17,7 +17,7 @@ function Login({ logIn }) {
       .then((userCredential) => {
         user.authentication = userCredential
         user.credentials = userCredential.user;
-        navigate('/chatspace');
+        navigate('/homepage');
         logIn();
       })
       .catch((error) => {
