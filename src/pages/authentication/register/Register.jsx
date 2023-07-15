@@ -11,9 +11,9 @@ import { config, user } from "../../../Firebase"
 
 async function createAccount(email, password) {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    return user.uid;
+    user.authentication = await createUserWithEmailAndPassword(config.auth, email, password);
+    user.credentials = userCredential.user;
+    return user.credentials.uid;
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -41,12 +41,10 @@ async function initAccount(event) {
       gender: gender,
       birthday: birthday,
     };
-    await setDoc(doc(db, userUID, "data"), docData);
-    await setDoc(doc(db, userUID, "friends"));
-    const folderPath = `${userUID}`;
-    const folderRef = ref(storage, folderPath);
-    const emptyFileRef = ref(storage, folderPath + ".keep");
-    await uploadString(emptyFileRef, "");
+    await setDoc(doc(config.firestore, userUID, "data"), docData);
+    await setDoc(doc(config.firestore, userUID, "friends"));
+    await ref(config.storage, `${userUID}`);
+    await uploadString(ref(config.storage, `${userUID}` + ".keep"), "");
   } catch (error) {
   }
 }

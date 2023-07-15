@@ -19,7 +19,7 @@ export const config = {
     auth: getAuth(firebase),
     firestore: getFirestore(firebase),
     storage: getStorage(firebase),
-    storageRef: ref(storage)
+    storageRef: ref(getStorage(firebase))
 }
 
 export const user = {

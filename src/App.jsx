@@ -20,6 +20,7 @@ import Register from "./pages/authentication/register/Register";
 import ChatSpace from "./pages/chatspace/ChatSpace.jsx";
 import Routing from "./pages/Routing.jsx";
 import Savedposts from "./pages/saved_videos/Savedposts";
+import { useAuth } from "./Global";
 
 const Protected = ({ isLoggedIn, children }) => {
   console.log(isLoggedIn)
@@ -31,27 +32,15 @@ const Protected = ({ isLoggedIn, children }) => {
 export default Protected;
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(() => {
-    // Check if the user is already logged in from local storage
-    const storedLoggedIn = localStorage.getItem('isLoggedIn');
-    return storedLoggedIn ? JSON.parse(storedLoggedIn) : null;
-  });
+  const { isLoggedIn, logIn, logOut } = useAuth();
 
-  const logIn = () => {
-    setisLoggedIn(true);
-    localStorage.setItem('isLoggedIn', true);
-  };
 
-  const logOut = () => {
-    setisLoggedIn(false);
-    localStorage.removeItem('isLoggedIn');
-  };
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Routing />}>
           <Route index element={<Index />} />
-          <Route path="login" element={<Login logIn={logIn} />} />
+          <Route path="/login" element={<Login logIn={logIn} />} />
           <Route
             path="ChatSpace"
             element={
