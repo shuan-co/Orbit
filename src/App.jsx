@@ -27,7 +27,6 @@ import Notifications from "./pages/homepage/components/Notifications";
 import Profile from "./pages/homepage/components/Profile";
 
 const Protected = ({ isLoggedIn, children }) => {
-  console.log(isLoggedIn)
   if (!isLoggedIn) {
     return <Navigate to="/login" replace />;
   }

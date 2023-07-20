@@ -52,7 +52,6 @@ function Register() {
       logIn();
       window.location.href = '/homepage';
     } catch (error) {
-      console.log(error);
     }
   }
 

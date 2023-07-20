@@ -15,8 +15,9 @@ function Login({ logIn }) {
     var password = document.getElementById("container-auth-right-password-login").value;
     signInWithEmailAndPassword(config.auth, email, password)
       .then((userCredential) => {
-        user.authentication = userCredential
+        user.authentication = userCredential;
         user.credentials = userCredential.user;
+        localStorage.setItem('user', JSON.stringify(user)); // Store the entire user object as JSON
         navigate('/homepage');
         logIn();
       })

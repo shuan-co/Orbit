@@ -12,6 +12,7 @@ function NavigationBar() {
         logOut();
         user.credentials = null;
         user.authentication = null;
+        localStorage.removeItem('user');
         window.location.href = '/login';
       })
       .catch((error) => {

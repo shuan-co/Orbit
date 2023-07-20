@@ -9,6 +9,9 @@ import Explore from './components/Explore.jsx';
 import Notifications from './components/Notifications.jsx';
 import './homepage.css';
 
+
+import { config } from "../../Firebase";
+
 function Homepage() {
   return (
     <div>
