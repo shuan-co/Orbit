@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form, Modal, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import Post from './Post';
 import './Feed.css';
+import { db } from '../../../firebase/Firebase';
+import { collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
 
 function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
     const [postModalShow, setPostModalShow] = useState(false);
@@ -14,50 +16,90 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
     const [posts, setPosts] = useState(initialPosts);
     const [viewedPost, setViewedPost] = useState(null);
     const [replyText, setReplyText] = useState('');
+    //const currentUser = window.user;
 
-    const handleSubmitPost = (event) => {
+    const handleSubmitPost = async (event) => {
         event.preventDefault();
-        console.log("Submitting post");
-
+    
+        if(!currentUser) {
+          console.error("Error adding document: No current user defined");
+          return;
+        }
+      
         const newPost = {
             id: Date.now(),
             title: postTitle,
             text: postText,
-            author: currentUser,
+            author: {
+              uid: currentUser.uid,
+              displayName: currentUser.displayName,
+            },
             media: []
-        };
-
-        setPosts([newPost, ...posts]);
-
+          };
+          
+      
+        try {
+            const docRef = await addDoc(collection(db, "posts"), newPost);
+            console.log("Document written with ID: ", docRef.id);
+            setPosts(oldPosts => [...oldPosts, {...newPost, id: docRef.id}]); // Update the posts state here
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }          
+      
         setPostTitle('');
         setPostText('');
-    };
-
-    const handleSubmitPostModal = (event) => {
+      };
+    
+    const handleSubmitPostModal = async (event) => {
         event.preventDefault();
-        console.log("Submitting post modal");
-
+    
+        if(!currentUser) {
+          console.error("Error adding document: No current user defined");
+          return;
+        }
+      
         const newPost = {
             id: Date.now(),
-            title: modalPostTitle,
-            text: modalPostText,
-            author: currentUser,
+            title: postTitle,
+            text: postText,
+            author: {
+              uid: currentUser.uid,
+              displayName: currentUser.displayName,
+            },
             media: []
-        };
-
-        setPosts([newPost, ...posts]);
-
+          };
+      
+        try {
+          const docRef = await addDoc(collection(db, "posts"), newPost);
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      
         setPostModalShow(false);
         setModalPostTitle('');
         setModalPostText('');
-    };
+      };
+    
+    
 
     const submitReply = (event) => {
       event.preventDefault();
       // Handle reply submission here.
       console.log(`Submitted reply: ${replyText}`);
       setReplyText('');
-  };
+  }; 
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "posts"), (snapshot) => {
+      const postsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setPosts(postsData);
+    });
+  
+    // Clean up the subscription on unmount
+    return () => unsubscribe();
+  }, []);
+  
 
   const handlePostClick = (post) => {
     setViewedPost(post);
