@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import TopNavbar from './components/Navbar.jsx';
 import Sidebar from './components/Sidebar.jsx';
@@ -14,6 +13,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function Homepage() {
     const [currentUser, setCurrentUser] = useState(null);
+    const [activePage, setActivePage] = useState("feed");
     
     useEffect(() => {
         const auth = getAuth();
@@ -28,16 +28,32 @@ function Homepage() {
         return () => unsubscribe();
     }, []);
     
+    let MainContent;
+    switch (activePage) {
+        case "feed":
+            MainContent = <Feed currentUser={currentUser} />;
+            break;
+        case "explore":
+            MainContent = <Explore />;
+            break;
+        case "profile":
+            MainContent = <Profile />;
+            break;
+        default:
+            MainContent = <Feed currentUser={currentUser} />;
+            break;
+    }
+    
     return (
         <div>
             <TopNavbar />
             <Container fluid>
                 <Row>
                     <Col xs={3}>
-                        <Sidebar />
+                        <Sidebar setActivePage={setActivePage} />
                     </Col>
                     <Col xs={6}>
-                        <Feed currentUser={currentUser} />
+                        {MainContent}
                     </Col>
                     <Col xs={3}>
                         <Trending />

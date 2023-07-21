@@ -1,9 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import Sidebar from './Sidebar';
 
 function Explore() {
-  // Simulated list of users. In a real application, this data would likely be fetched from an API.
   const users = [
     { username: 'user1' },
     { username: 'user2' },
@@ -11,9 +9,7 @@ function Explore() {
   ];
 
   return (
-    <div style={{ display: "flex", gap: "5vw" }}>
-      <Sidebar />
-      <div style={{ width: "80vw", marginTop: "5vh" }}>
+    <div style={{ width: "100%", marginTop: "5vh" }}>
         <h2>Explore</h2>
         {users.length > 0 ? (
           users.map(user => (
@@ -27,7 +23,6 @@ function Explore() {
         ) : (
           <p>No users available.</p>
         )}
-      </div>
     </div>
   );
 }

@@ -2,27 +2,20 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faRocket, faUser, faBell, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
-function Sidebar({ setPostModalShow }) {
+function Sidebar({ setPostModalShow, setActivePage }) {
     return (
         <div className="sidebar">
             <div className="sidebar-container">
-                <Button variant="primary" className="sidebar-button">
-                    <Link to="/homepage" className="link-button">
-                        <FontAwesomeIcon icon={faHome} /> Home
-                    </Link>
+                <Button variant="primary" className="sidebar-button" onClick={() => setActivePage("feed")}>
+                    <FontAwesomeIcon icon={faHome} /> Home
                 </Button>
-                <Button variant="primary" className="sidebar-button">
-                    <Link to="/explore" className="link-button">
-                        <FontAwesomeIcon icon={faRocket} /> Explore
-                    </Link>
+                <Button variant="primary" className="sidebar-button" onClick={() => setActivePage("explore")}>
+                    <FontAwesomeIcon icon={faRocket} /> Explore
                 </Button>
-                <Button variant="primary" className="sidebar-button">
-                    <Link to="/profile" className="link-button">
-                        <FontAwesomeIcon icon={faUser} /> Profile
-                    </Link>
+                <Button variant="primary" className="sidebar-button" onClick={() => setActivePage("profile")}>
+                    <FontAwesomeIcon icon={faUser} /> Profile
                 </Button>
                 <Button variant="primary" className="sidebar-button" onClick={() => { loadContent('notifications'); showAllHardcodedNotifications(); }}>
                     <FontAwesomeIcon icon={faBell} /> Notifications
