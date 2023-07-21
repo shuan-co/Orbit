@@ -36,6 +36,10 @@ body {
   font-weight: 300;
 }
 
+.homepage .col {
+  overflow-y: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
