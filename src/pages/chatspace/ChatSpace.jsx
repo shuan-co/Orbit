@@ -6,7 +6,7 @@ import NavigationBar from "../../components/navigation2/NavigationBar";
 import BackgroundChatSpace from "./background/BackgroundChatSpace";
 
 
-import { collection, query, orderBy, limit } from "firebase/firestore";
+import { collection, query, orderBy, limit, updateDoc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { config, user } from "../../Firebase";
 
@@ -69,8 +69,8 @@ const addUser = (event) => {
                   // Conversations don't exist, create them
                   setDoc(conversationsRef1, {});
                   setDoc(conversationsRef2, {});
-                  setDoc(doc(config.firestore, uid, "/friends"), { addUID: addUID })
-                  setDoc(doc(config.firestore, addUID, "/friends"), { uid: uid })
+                  updateDoc(doc(config.firestore, uid, "/friends"), { [addUID]: addUID })
+                  updateDoc(doc(config.firestore, addUID, "/friends"), { [uid]: uid })
                   console.log(`Conversation with ${addUID} created.`);
                 }
               })
@@ -94,12 +94,15 @@ const addUser = (event) => {
   event.preventDefault(); // Prevent the default form submission
 };
 
+
+var friendRepository = []; // Initialize friendRepository as an empty array
+
 async function fetchFriendData(uid) {
   try {
     const friendRefData = doc(config.firestore, uid + "/data");
     const friendSnapshot = await getDoc(friendRefData);
     const friendData = friendSnapshot.data();
-    console.log(friendData);
+    friendRepository.push(friendData); // Push the fetched data into the friendRepository array
   } catch (error) {
     console.error("Error fetching data for UID:", uid, error);
   }
@@ -155,15 +158,20 @@ function ChatSpace() {
 
   // Get Friend Names
   const friendData = [];
-
   useEffect(() => {
     // Loop through each UID in friendsUID and call the fetchFriendData function
+    friendRepository = [];
     for (const uid in friendsUID) {
       fetchFriendData(friendsUID[uid]);
     }
-  }, [friendsUID]); // This useEffect will run whenever friendsUID changes
+  }, [friendsUID]);
 
+  try {
+    console.log(friendRepository[0]["firstname"]);
+    console.log(friendRepository[1]["firstname"]);
+  } catch (error) {
 
+  }
 
 
   const updateChatBoxId = (name) => {
@@ -251,30 +259,16 @@ function ChatSpace() {
                 name={"Find User"}
                 picture={"/chatspace/add.png"}
               />
+              {friendRepository && friendRepository.map((friend) => (
+                <FriendsBox
+                  name={friend["firstname"]}
+                  picture={"/chatspace/add.png"}
+                />
+              ))}
               <FriendsBox
                 onClick={updateChatBoxId}
                 name={"Seele"}
                 picture={"/chatspace/seele.png"}
-              />
-              <FriendsBox
-                onClick={updateChatBoxId}
-                name={"Kafka"}
-                picture={"/chatspace/kafka.jpg"}
-              />
-              <FriendsBox
-                onClick={updateChatBoxId}
-                name={"Natasha"}
-                picture={"/chatspace/Natasha.png"}
-              />
-              <FriendsBox
-                onClick={updateChatBoxId}
-                name={"Serval"}
-                picture={"/chatspace/Serval.jpg"}
-              />
-              <FriendsBox
-                onClick={updateChatBoxId}
-                name={"Myself"}
-                picture={"/chatspace/himeko.jpg"}
               />
             </div>
             <div id="content-message-border-chatspace">
