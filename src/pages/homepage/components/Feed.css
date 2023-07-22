@@ -86,6 +86,7 @@
 
   #content-area {
     position: relative;
+    overflow-y: auto;
   }
 
   .card {
