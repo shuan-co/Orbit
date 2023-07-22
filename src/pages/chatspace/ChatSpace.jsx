@@ -238,10 +238,10 @@ function ChatSpace() {
           {messages && messages.map((msg) => (
             <FriendMessage
               key={msg.id}
-              sender={true}
+              sender={msg.uid === JSON.parse(localStorage.getItem('user')).credentials.uid ? true : false}
               message={msg.text} // Access the specific property you want to render
-              usericon={"/chatspace/seele.png"}
-              name={"Seele"}
+              usericon={"/chatspace/add.png"}
+              name={selectedFriend.name}
             />
           ))}
         </div>
@@ -311,11 +311,6 @@ function ChatSpace() {
                   onClick={() => loadChat(friend)}
                 />
               ))}
-              <FriendsBox
-                onClick={updateChatBoxId}
-                name={"Seele"}
-                picture={"/chatspace/seele.png"}
-              />
             </div>
             <div id="content-message-border-chatspace">
               {chatboxid ? (
