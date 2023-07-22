@@ -114,7 +114,18 @@ async function fetchFriendData(uid) {
   }
 }
 
+async function getUserData() {
+  const userDataRef = doc(config.firestore, JSON.parse(localStorage.getItem('user')).credentials.uid + "/data");
+  const userSnapshot = await getDoc(userDataRef);
+  const userData = await userSnapshot.data();
+  userInfo = userData;
+}
+
+let userInfo = getUserData().then(() => { return userInfo });
+
 function ChatSpace() {
+  // Get User Information
+
   // Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -197,6 +208,7 @@ function ChatSpace() {
     updateName(data["firstname"] + " " + data["lastname"]);
     updateTagline("testing is cool");
     updateUid(data["uid"]);
+    getUserData();
     updateChatBoxId();
   }
 
@@ -218,18 +230,26 @@ function ChatSpace() {
     };
     await setDoc(doc(collection(config.firestore, JSON.parse(localStorage.getItem('user')).credentials.uid, "friends", selectedFriend.uid)), docData);
     await setDoc(doc(collection(config.firestore, selectedFriend.uid, "friends", JSON.parse(localStorage.getItem('user')).credentials.uid)), docData);
+    // Scroller Function
+    try {
+      var chatscreen = document.getElementById("content-message-container-chatspace")
+      chatscreen.scrollTop = chatscreen.scrollHeight;
+    } catch (error) {
+
+    }
   }
 
   let selectedChat;
   if (selectedFriend.name != "") {
+    console.log(userInfo);
     selectedChat = (
       <div id="content-message-chatspace-selected">
         <div id="content-message-header-chatspace">
-          <div id="content  -message-info-chatspace">
+          <div id="content  -message-info-chatspace" style={{ marginLeft: "1vw", marginTop: "1vh" }}>
             <span id="content-message-header-name-chatspace">{selectedFriend.name}</span>
             <span id="content-message-header-sub-chatspace">
               <br />
-              {selectedFriend.tagline}
+              {selectedFriend.uid}
             </span>
           </div>
           <hr />
@@ -241,7 +261,7 @@ function ChatSpace() {
               sender={msg.uid === JSON.parse(localStorage.getItem('user')).credentials.uid ? true : false}
               message={msg.text} // Access the specific property you want to render
               usericon={"/chatspace/add.png"}
-              name={selectedFriend.name}
+              name={msg.uid === JSON.parse(localStorage.getItem('user')).credentials.uid ? userInfo["firstname"] + " " + userInfo["lastname"] : selectedFriend.name}
             />
           ))}
         </div>
@@ -277,6 +297,7 @@ function ChatSpace() {
       >
         <Fade in={open}>
           <Box sx={style}>
+            <p style={{ fontFamily: "AC-SUPERG", color: "grey", fontSize: "0.7em" }}>Your UID: {JSON.parse(localStorage.getItem('user')).credentials.uid}</p>
             <form onSubmit={addUser}>
               <input type="text" placeholder="User Identification" id="content-message-add-user" style={{ width: "20vw", border: "none", borderRadius: "0px" }} />
             </form>

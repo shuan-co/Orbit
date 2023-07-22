@@ -5,11 +5,11 @@ function FriendMessage({ sender, message, usericon, sendericon, name }) {
     <>
       {sender ? (
         <div id="container-message-FriendMessage">
-          <img id="message-icon-FriendMessage" src={usericon} alt="" />
+          <img id="message-icon-FriendMessage" src={"/chatspace/add.png"} alt="" />
           <div id="message-info-FriendMessage">
             <p id="message-name-FriendMessage">{name}</p>
             <div id="message-chatbubble-FriendMessage">
-              <p id="message-sent-FriendMessage">{message}</p>
+              <p id="message-sent-FriendMessage" style={{ color: "black" }}>{message}</p>
             </div>
           </div>
         </div>
@@ -18,10 +18,10 @@ function FriendMessage({ sender, message, usericon, sendericon, name }) {
           <div id="message-info-FriendMessage">
             <p id="message-name-FriendMessage-user">{name}</p>
             <div id="message-chatbubble-FriendMessage-user">
-              <p id="message-sent-FriendMessage">{message}</p>
+              <p id="message-sent-FriendMessage" style={{ color: "black" }}>{message}</p>
             </div>
           </div>
-          <img id="message-icon-FriendMessage-user" src={sendericon} alt="" />
+          <img id="message-icon-FriendMessage-user" src={"/chatspace/add.png"} alt="" />
         </div>
       )}
     </>
