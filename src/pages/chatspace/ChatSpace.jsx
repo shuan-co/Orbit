@@ -6,7 +6,7 @@ import NavigationBar from "../../components/navigation2/NavigationBar";
 import BackgroundChatSpace from "./background/BackgroundChatSpace";
 
 
-import { collection, query, orderBy, limit, updateDoc } from "firebase/firestore";
+import { collection, query, orderBy, limit, updateDoc, getDocs, Timestamp } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { config, user } from "../../Firebase";
 
@@ -53,10 +53,10 @@ const addUser = (event) => {
         getUID()
           .then((uid) => {
             // Now you can add the documents to the corresponding collections
-
+            // setDoc(doc(collection(config.firestore, "uid/friends/addUID")), {});
             // Check if uid/friends/conversations/addUID exists
-            const conversationsRef1 = doc(config.firestore, uid, "/friends/conversations", addUID);
-            const conversationsRef2 = doc(config.firestore, addUID, "/friends/conversations", uid);
+            const conversationsRef1 = doc(config.firestore, uid, "/friends", addUID, "verification");
+            const conversationsRef2 = doc(config.firestore, addUID, "/friends", uid, "verification");
 
             // Check if the conversation with addUID already exists
             getDoc(conversationsRef1)
@@ -67,8 +67,8 @@ const addUser = (event) => {
                   // For example, show an error message or perform other actions as needed.
                 } else {
                   // Conversations don't exist, create them
-                  setDoc(conversationsRef1, {});
-                  setDoc(conversationsRef2, {});
+                  setDoc(doc(collection(config.firestore, uid, "friends", addUID), "verification"), {});
+                  setDoc(doc(collection(config.firestore, addUID, "friends", uid), "verification"), {});;
                   updateDoc(doc(config.firestore, uid, "/friends"), { [addUID]: addUID })
                   updateDoc(doc(config.firestore, addUID, "/friends"), { [uid]: uid })
                   console.log(`Conversation with ${addUID} created.`);
@@ -114,45 +114,6 @@ async function fetchFriendData(uid) {
   }
 }
 
-function loadChat(data) {
-  console.log(data);
-  return (
-    <div id="content-message-chatspace-selected">
-      <div id="content-message-header-chatspace">
-        <div id="content  -message-info-chatspace">
-          <span id="content-message-header-name-chatspace">{data["firstname"] + " " + data["lastname"]}</span>
-          <span id="content-message-header-sub-chatspace">
-            <br />
-            If you have anything to say, spill it!
-          </span>
-        </div>
-        <hr />
-      </div>
-      <div id="content-message-container-chatspace">
-        {messages && messages.map((msg) => (
-          <FriendMessage
-            key={msg.id}
-            sender={true}
-            message={msg.text} // Access the specific property you want to render
-            usericon={"/chatspace/seele.png"}
-            name={"Seele"}
-          />
-        ))}
-      </div>
-      <div id="content-message-sub-chatspace">
-        <input
-          type="text"
-          name=""
-          id="content-message-input-chatspace"
-          placeholder="Message Here"
-        />
-        <button id="content-message-submit-chatspace">Send</button>
-      </div>
-    </div>
-  );
-}
-
-
 function ChatSpace() {
   // Modal
   const [open, setOpen] = React.useState(false);
@@ -180,10 +141,27 @@ function ChatSpace() {
   const [chatboxid, setChatBoxId] = useState(true);
   const [prevName, setPrevName] = useState("");
 
-  //  Retrieve Messages
-  const messageRef = collection(config.firestore, "messages");
-  const orderedQuery = query(messageRef, orderBy("createdAt"), limit(25));
-  const [messages] = useCollectionData(orderedQuery, { idField: 'id' });
+  // Current User Selected
+  const [selectedFriend, setData] = useState({
+    name: '',
+    tagline: '',
+    uid: 'buffer'
+  });
+
+  // Function to update the name state
+  const updateName = (nameValue) => {
+    setData((prevData) => ({ ...prevData, name: nameValue }));
+  };
+
+  // Function to update the tagline state
+  const updateTagline = (taglineValue) => {
+    setData((prevData) => ({ ...prevData, tagline: taglineValue }));
+  };
+
+  // Function to update the uid state
+  const updateUid = (uidValue) => {
+    setData((prevData) => ({ ...prevData, uid: uidValue }));
+  };
 
   // Retrieve friends
   const friendRef = collection(config.firestore, JSON.parse(localStorage.getItem('user')).credentials.uid);
@@ -212,16 +190,46 @@ function ChatSpace() {
     setChatBoxId(false);
     setPrevName(name);
   };
-  let content;
-  if (prevName === "Seele") {
-    content = (
+
+
+  async function loadChat(data) {
+    console.log(data);
+    updateName(data["firstname"] + " " + data["lastname"]);
+    updateTagline("testing is cool");
+    updateUid(data["uid"]);
+    updateChatBoxId();
+  }
+
+  //  Retrieve Messages
+  const messageRef = collection(config.firestore, JSON.parse(localStorage.getItem('user')).credentials.uid, "friends", selectedFriend.uid);
+  const orderedQuery = query(messageRef, orderBy("createdAt"), limit(25));
+  const [messages] = useCollectionData(orderedQuery, { idField: 'id' });
+
+  // Sending Messages
+  async function sendMessage(event) {
+    event.preventDefault();
+    const userMessage = document.getElementById("content-message-input-chatspace").value;
+    document.getElementById("content-message-input-chatspace").value = "";
+    const messageTime = Timestamp.now();
+    var docData = {
+      text: userMessage,
+      createdAt: messageTime,
+      uid: JSON.parse(localStorage.getItem('user')).credentials.uid,
+    };
+    await setDoc(doc(collection(config.firestore, JSON.parse(localStorage.getItem('user')).credentials.uid, "friends", selectedFriend.uid)), docData);
+    await setDoc(doc(collection(config.firestore, selectedFriend.uid, "friends", JSON.parse(localStorage.getItem('user')).credentials.uid)), docData);
+  }
+
+  let selectedChat;
+  if (selectedFriend.name != "") {
+    selectedChat = (
       <div id="content-message-chatspace-selected">
         <div id="content-message-header-chatspace">
           <div id="content  -message-info-chatspace">
-            <span id="content-message-header-name-chatspace">Seele</span>
+            <span id="content-message-header-name-chatspace">{selectedFriend.name}</span>
             <span id="content-message-header-sub-chatspace">
               <br />
-              If you have anything to say, spill it!
+              {selectedFriend.tagline}
             </span>
           </div>
           <hr />
@@ -238,13 +246,15 @@ function ChatSpace() {
           ))}
         </div>
         <div id="content-message-sub-chatspace">
-          <input
-            type="text"
-            name=""
-            id="content-message-input-chatspace"
-            placeholder="Message Here"
-          />
-          <button id="content-message-submit-chatspace">Send</button>
+          <form onSubmit={sendMessage}>
+            <input
+              type="text"
+              name=""
+              id="content-message-input-chatspace"
+              placeholder="Message Here"
+            />
+            <button id="content-message-submit-chatspace" onClick={sendMessage}>Send</button>
+          </form>
         </div>
       </div>
     );
@@ -320,7 +330,7 @@ function ChatSpace() {
                   </span>
                 </div>
               ) : (
-                content
+                selectedChat
               )}
             </div>
           </div>
