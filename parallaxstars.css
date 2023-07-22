@@ -1,47 +1,47 @@
 html {
-    height: 100%;
-  }
-  
-  h1 {
-    font-size: calc(2.25em + 1vmin);
-  }
-  
-  .container {
-    z-index: 0;
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    height: 100vh;
-  }
-    
-  #scene {
-    pointer-events: none;
-    height: inherit;
-  }
-  
-  .text-layer {
-    position: absolute;
-  }
-    
-  #p1 {
-    top: 20vh !important;
-    left: 30vw !important;
-  }
-  
-  #p2 {
-    top: 40vh !important;
-    left: 40vw !important;
-  }
-  
-  #p3 {
-    top: 60vh !important;
-    left: 45vw !important;
-  }
-  
-  .star {
-    position: absolute;
-    background-color: #ffffff;
-    border-radius: 50%;
- } 
+  height: 100%;
+}
+
+h1 {
+  font-size: calc(2.25em + 1vmin);
+}
+
+.container {
+  z-index: 0;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+}
+
+#scene {
+  pointer-events: none;
+  height: inherit;
+}
+
+.text-layer {
+  position: absolute;
+}
+
+#p1 {
+  top: 20vh !important;
+  left: 30vw !important;
+}
+
+#p2 {
+  top: 40vh !important;
+  left: 40vw !important;
+}
+
+#p3 {
+  top: 60vh !important;
+  left: 45vw !important;
+}
+
+.star {
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
