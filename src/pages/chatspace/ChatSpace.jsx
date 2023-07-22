@@ -102,10 +102,54 @@ async function fetchFriendData(uid) {
     const friendRefData = doc(config.firestore, uid + "/data");
     const friendSnapshot = await getDoc(friendRefData);
     const friendData = friendSnapshot.data();
-    friendRepository.push(friendData); // Push the fetched data into the friendRepository array
+    var duplicates = false;
+    friendRepository.forEach(function (item, index) {
+      if (item["uid"] === friendData["uid"])
+        duplicates = true;
+    })
+    if (!duplicates)
+      friendRepository.push(friendData); // Push the fetched data into the friendRepository array
   } catch (error) {
     console.error("Error fetching data for UID:", uid, error);
   }
+}
+
+function loadChat(data) {
+  console.log(data);
+  return (
+    <div id="content-message-chatspace-selected">
+      <div id="content-message-header-chatspace">
+        <div id="content  -message-info-chatspace">
+          <span id="content-message-header-name-chatspace">{data["firstname"] + " " + data["lastname"]}</span>
+          <span id="content-message-header-sub-chatspace">
+            <br />
+            If you have anything to say, spill it!
+          </span>
+        </div>
+        <hr />
+      </div>
+      <div id="content-message-container-chatspace">
+        {messages && messages.map((msg) => (
+          <FriendMessage
+            key={msg.id}
+            sender={true}
+            message={msg.text} // Access the specific property you want to render
+            usericon={"/chatspace/seele.png"}
+            name={"Seele"}
+          />
+        ))}
+      </div>
+      <div id="content-message-sub-chatspace">
+        <input
+          type="text"
+          name=""
+          id="content-message-input-chatspace"
+          placeholder="Message Here"
+        />
+        <button id="content-message-submit-chatspace">Send</button>
+      </div>
+    </div>
+  );
 }
 
 
@@ -157,22 +201,12 @@ function ChatSpace() {
   }
 
   // Get Friend Names
-  const friendData = [];
   useEffect(() => {
     // Loop through each UID in friendsUID and call the fetchFriendData function
-    friendRepository = [];
     for (const uid in friendsUID) {
       fetchFriendData(friendsUID[uid]);
     }
   }, [friendsUID]);
-
-  try {
-    console.log(friendRepository[0]["firstname"]);
-    console.log(friendRepository[1]["firstname"]);
-  } catch (error) {
-
-  }
-
 
   const updateChatBoxId = (name) => {
     setChatBoxId(false);
@@ -256,13 +290,15 @@ function ChatSpace() {
             <div id="scrollbar-friends-chatspace">
               <FriendsBox
                 onClick={handleOpen}
-                name={"Find User"}
+                name={"Find User | Load Conversations"}
                 picture={"/chatspace/add.png"}
               />
               {friendRepository && friendRepository.map((friend) => (
                 <FriendsBox
-                  name={friend["firstname"]}
+                  name={friend["firstname"] + " " + friend["lastname"]}
                   picture={"/chatspace/add.png"}
+                  key={friend["uid"]}
+                  onClick={() => loadChat(friend)}
                 />
               ))}
               <FriendsBox
