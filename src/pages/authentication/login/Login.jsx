@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { config, user } from "../../../Firebase";
@@ -7,7 +7,7 @@ import "./login.css";
 
 function Login({ logIn }) {
   const navigate = useNavigate(); // Move useNavigate inside the Login component
-
+  const [wrongCredentials, setWrongCredentials] = useState(false);
   const login = (event) => {
     event.preventDefault();
 
@@ -24,6 +24,7 @@ function Login({ logIn }) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setWrongCredentials(true);
       });
   };
   return (
@@ -64,6 +65,7 @@ function Login({ logIn }) {
               <p id="container-auth-right-lower-login">
                 What are your plans today, traveler?
               </p>
+              {wrongCredentials ? <p id="container-auth-right-lower-login" style={{ color: "#ffcccb" }}>*Incorrect Email or Password</p> : null}
               <form onSubmit={login} id="container-auth-right-form-login">
                 <label
                   id="container-auth-right-label-login"
@@ -78,6 +80,7 @@ function Login({ logIn }) {
                   id="container-auth-right-email-login"
                   placeholder="sample@gmail.com"
                   required="true"
+                  onClick={() => { setWrongCredentials(false) }}
                 />
                 <label
                   id="container-auth-right-label-login"
@@ -93,6 +96,7 @@ function Login({ logIn }) {
                   id="container-auth-right-password-login"
                   required="true"
                   min={8}
+                  onClick={() => { setWrongCredentials(false) }}
                 />
                 {/* <a
                   id="container-auth-right-submit-login"
@@ -100,7 +104,7 @@ function Login({ logIn }) {
                 >
                   Submit
                 </a> */}
-                <input id="container-auth-right-submit-login" type="submit" />
+                <input id="container-auth-right-submit-login" type="submit" onClick={() => { setWrongCredentials(false) }} />
               </form>
             </div>
           </div>

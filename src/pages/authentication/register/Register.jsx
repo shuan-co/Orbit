@@ -1,6 +1,7 @@
 import "./register.css";
 import React, { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
+import CircularProgress from '@mui/joy/CircularProgress';
 
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -14,17 +15,19 @@ import { useAuth } from '../../../Global';
 async function createAccount(email, password) {
   try {
     user.authentication = await createUserWithEmailAndPassword(config.auth, email, password);
+    localStorage.setItem('user', JSON.stringify(user.authentication));
     user.credentials = user.authentication.user;
     return user.credentials.uid;
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    throw error;
   }
 }
 
 function Register() {
   const { isLoggedIn, logIn, logOut } = useAuth();
+  const [duplicateAccount, setDuplicateAccount] = useState(false);
+  const [loadingLogin, setLoadingLogin] = useState(false);
   async function initAccount(event) {
     event.preventDefault();
     var firstName = document.getElementById("register-firstName").value;
@@ -36,6 +39,7 @@ function Register() {
     var password = document.getElementById("register-password").value;
 
     try {
+      setLoadingLogin(true);
       var userUID = await createAccount(email, password);
       var docData = {
         uid: userUID,
@@ -52,6 +56,8 @@ function Register() {
       logIn();
       window.location.href = '/homepage';
     } catch (error) {
+      setLoadingLogin(false);
+      setDuplicateAccount(true);
     }
   }
 
@@ -72,6 +78,13 @@ function Register() {
   const handleDateChange = (event) => {
     setInputValue(event.target.value);
   };
+
+  const loading = (<CircularProgress
+    color="neutral"
+    determinate={false}
+    size="md"
+    variant="solid"
+  />);
   return (
     <>
       <div id="container-register">
@@ -98,6 +111,11 @@ function Register() {
         />
         <div id="container-inner-register">
           <div id="container-inner-left-register">
+            <div style={{ position: "absolute", top: "2vh", left: "1.2vw" }}>
+              {
+                loadingLogin ? loading : null
+              }
+            </div>
             <div id="container-inner-left-form-register">
               <span id="container-inner-left-form-header-register">
                 CREATE ACCOUNT &
@@ -112,6 +130,7 @@ function Register() {
                 </a>
               </p>
               <form onSubmit={initAccount}>
+                {duplicateAccount ? <p id="contaner-inner-left-form-sub-register" style={{ color: "#ffcccb" }}>*Email already registered</p> : null}
                 <div id="form-container-register">
                   <div style={{ display: "flex" }}>
                     <div className="form-container-namedesign-register">
@@ -127,6 +146,7 @@ function Register() {
                         type="text"
                         required="true"
                         id="register-firstName"
+                        onClick={() => { setDuplicateAccount(false) }}
                       />
                     </div>
                     <div className="form-container-namedesign-register">
@@ -142,6 +162,7 @@ function Register() {
                         type="text"
                         required="true"
                         id="register-lastName"
+                        onClick={() => { setDuplicateAccount(false) }}
                       />
                     </div>
                   </div>
@@ -158,6 +179,7 @@ function Register() {
                         placeholder="Gender"
                         type="text"
                         id="register-gender"
+                        onClick={() => { setDuplicateAccount(false) }}
                       />
                     </div>
                     <div className="form-container-namedesign-register">
@@ -176,6 +198,7 @@ function Register() {
                         onBlur={handleBlur}
                         onChange={handleDateChange}
                         id="register-birthday"
+                        onClick={() => { setDuplicateAccount(false) }}
                       />
                     </div>
                   </div>
@@ -192,6 +215,7 @@ function Register() {
                       type="email"
                       required="true"
                       id="register-email"
+                      onClick={() => { setDuplicateAccount(false) }}
                     />
                   </div>
                   <div style={{ display: "flex" }}>
@@ -209,12 +233,14 @@ function Register() {
                         type="password"
                         required="true"
                         id="register-password"
+                        onClick={() => { setDuplicateAccount(false) }}
                       />
                     </div>
                   </div>
                   <input
                     id="container-inner-left-form-submit-register"
                     type="submit"
+                    onClick={() => { setDuplicateAccount(false) }}
                   />
                 </div>
               </form>

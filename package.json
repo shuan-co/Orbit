@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@mui/material": "^5.13.5",
+    "@mui/joy": "^5.0.0-alpha.88",
+    "@mui/material": "^5.14.1",
     "@mui/styled-engine": "^5.13.2",
     "@popperjs/core": "^2.11.8",
     "@react-spring/parallax": "^9.7.2",
