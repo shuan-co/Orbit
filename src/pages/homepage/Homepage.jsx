@@ -46,10 +46,11 @@ function Homepage() {
     
     return (
         <div>
-            <TopNavbar />
+          <TopNavbar />
+          <div style={{overflowY: 'auto'}}>
             <Container fluid>
                 <Row>
-                    <Col xs={3}>
+                <Col xs={3} className="sidebar-sticky">
                         <Sidebar setActivePage={setActivePage} />
                     </Col>
                     <Col xs={6}>
@@ -60,8 +61,9 @@ function Homepage() {
                     </Col>
                 </Row>
             </Container>
+          </div>
         </div>
-    );
+      );      
 }
 
 export default Homepage;
