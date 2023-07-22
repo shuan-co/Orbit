@@ -10,11 +10,12 @@ import Notifications from './components/Notifications.jsx';
 import './homepage.css';
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import NavigationBar from '../../components/navigation2/NavigationBar.jsx';
 
 function Homepage() {
     const [currentUser, setCurrentUser] = useState(null);
     const [activePage, setActivePage] = useState("feed");
-    
+
     useEffect(() => {
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, user => {
@@ -24,10 +25,10 @@ function Homepage() {
                 setCurrentUser(null);
             }
         });
-        
+
         return () => unsubscribe();
     }, []);
-    
+
     let MainContent;
     switch (activePage) {
         case "feed":
@@ -43,27 +44,28 @@ function Homepage() {
             MainContent = <Feed currentUser={currentUser} />;
             break;
     }
-    
+
     return (
         <div>
-          <TopNavbar />
-          <div style={{overflowY: 'auto'}}>
-            <Container fluid>
-                <Row>
-                <Col xs={3} className="sidebar-sticky">
-                        <Sidebar setActivePage={setActivePage} />
-                    </Col>
-                    <Col xs={6}>
-                        {MainContent}
-                    </Col>
-                    <Col xs={3}>
-                        <Trending />
-                    </Col>
-                </Row>
-            </Container>
-          </div>
+            <NavigationBar />
+            <TopNavbar />
+            <div style={{ overflowY: 'auto' }}>
+                <Container fluid>
+                    <Row>
+                        <Col xs={3} className="sidebar-sticky">
+                            <Sidebar setActivePage={setActivePage} />
+                        </Col>
+                        <Col xs={6}>
+                            {MainContent}
+                        </Col>
+                        <Col xs={3}>
+                            <Trending />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         </div>
-      );      
+    );
 }
 
 export default Homepage;

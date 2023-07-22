@@ -104,7 +104,7 @@ function Login({ logIn }) {
                 >
                   Submit
                 </a> */}
-                <input id="container-auth-right-submit-login" type="submit" onClick={() => { setWrongCredentials(false) }} />
+                <input id="container-auth-right-submit-login" type="submit" onClick={() => { setWrongCredentials(false) }} value="Submit" />
               </form>
             </div>
           </div>

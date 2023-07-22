@@ -109,7 +109,7 @@ const NavigationBar = () => {
                 </span>
                 <span className="itembox">
                   <div className="nav_button">
-                    <a id="home_button" href="../../../OrbitHtml.html"></a>
+                    <a id="home_button" href="../../../homepage"></a>
                   </div>
                   <div className="nav_label">
                     <p className="nav_labeltext">Home</p>
