@@ -6,6 +6,7 @@ import Post from './Post';
 import './Feed.css';
 import { db } from '../../../firebase/Firebase';
 import { collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
     const [postModalShow, setPostModalShow] = useState(false);
@@ -16,16 +17,20 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
     const [posts, setPosts] = useState(initialPosts);
     const [viewedPost, setViewedPost] = useState(null);
     const [replyText, setReplyText] = useState('');
-    //const currentUser = window.user;
 
     const handleSubmitPost = async (event) => {
+        console.log('testsubmit')
         event.preventDefault();
+        const storage = getStorage();
     
         if(!currentUser) {
           console.error("Error adding document: No current user defined");
           return;
         }
       
+        const fileInput = document.getElementById('post-media');
+        const files = fileInput.files;
+    
         const newPost = {
             id: Date.now(),
             title: postTitle,
@@ -36,15 +41,53 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
               lastname: currentUser.lastname,
             },
             media: []
-          };          
-      
+        };
+        const uploadTasks = [];
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+        
+          const storageRef = ref(storage, 'posts/' + file.name);
+        
+          const uploadTask = uploadBytesResumable(storageRef, file);
+        
+          const uploadPromise = new Promise((resolve, reject) => {
+            uploadTask.on('state_changed', 
+              (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+              }, 
+              (error) => {
+                console.error("Error uploading file: ", error);
+                reject(error);
+              }, 
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                  console.log('File available at', downloadURL);
+        
+                  newPost.media.push({
+                    type: file.type,
+                    url: downloadURL
+                  });
+        
+                  resolve();
+                });
+              }
+            );
+          });
+        
+          uploadTasks.push(uploadPromise);
+        }
+        
         try {
-            const docRef = await addDoc(collection(db, "posts"), newPost);
-            console.log("Document written with ID: ", docRef.id);
-            setPosts(oldPosts => [...oldPosts, {...newPost, id: docRef.id}]); // Update the posts state here
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }          
+          await Promise.allSettled(uploadTasks);
+        
+          const docRef = await addDoc(collection(db, "posts"), newPost);
+          console.log("Document written with ID: ", docRef.id);
+          setPosts(oldPosts => [...oldPosts, {...newPost, id: docRef.id}]);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }     
       
         setPostTitle('');
         setPostText('');
@@ -52,31 +95,75 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
     
     const handleSubmitPostModal = async (event) => {
         event.preventDefault();
-    
+        const storage = getStorage();
+        console.log('testsubmit')
+
         if(!currentUser) {
           console.error("Error adding document: No current user defined");
           return;
         }
       
+        const fileInput = document.getElementById('post-media');
+        const files = fileInput.files;
+    
         const newPost = {
             id: Date.now(),
-            title: postTitle,
-            text: postText,
+            title: modalPostTitle,
+            text: modalPostText,
             author: {
               uid: currentUser.uid,
               firstname: currentUser.firstname,
               lastname: currentUser.lastname,
             },
             media: []
-          };
-                    
+        };
+        
+        const uploadTasks = [];
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+        
+          const storageRef = ref(storage, 'posts/' + file.name);
+        
+          const uploadTask = uploadBytesResumable(storageRef, file);
+        
+          const uploadPromise = new Promise((resolve, reject) => {
+            uploadTask.on('state_changed', 
+              (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+              }, 
+              (error) => {
+                console.error("Error uploading file: ", error);
+                reject(error);
+              }, 
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                  console.log('File available at', downloadURL);
+        
+                  newPost.media.push({
+                    type: file.type,
+                    url: downloadURL
+                  });
+        
+                  resolve();
+                });
+              }
+            );
+          });
+        
+          uploadTasks.push(uploadPromise);
+        }
+        
         try {
+          await Promise.allSettled(uploadTasks); 
+        
           const docRef = await addDoc(collection(db, "posts"), newPost);
           console.log("Document written with ID: ", docRef.id);
+          setPosts(oldPosts => [...oldPosts, {...newPost, id: docRef.id}]);
         } catch (e) {
           console.error("Error adding document: ", e);
         }
-      
         setPostModalShow(false);
         setModalPostTitle('');
         setModalPostText('');
@@ -86,7 +173,6 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
 
     const submitReply = (event) => {
       event.preventDefault();
-      // Handle reply submission here.
       console.log(`Submitted reply: ${replyText}`);
       setReplyText('');
   }; 
@@ -97,9 +183,9 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
       setPosts(postsData);
     });
   
-    // Clean up the subscription on unmount
     return () => unsubscribe();
   }, []);
+
   
 
   const handlePostClick = (post) => {
@@ -213,8 +299,6 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
 
 export default Feed;
 
-// Dummy functions for demonstration purposes
-// You'll need to replace these with your actual implementation
 function loadContent(page) {
     console.log(`Loading content for ${page}`);
 }
