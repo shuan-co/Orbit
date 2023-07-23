@@ -40,10 +40,11 @@ function Homepage() {
         console.log("User object:", user);
     
         const db = getFirestore();
-        const userRef = doc(db, 'users', user.uid, 'data', user.uid);
+        const userRef = doc(db, user.uid, 'data');
         console.log("Fetching user doc for uid:", user.uid);
         const userDoc = await getDoc(userRef);
         console.log("Fetched user doc:", userDoc);
+        console.log("Fetched user doc data:", userDoc.data());
     
         if (userDoc.exists()) {
             const fullUser = { 

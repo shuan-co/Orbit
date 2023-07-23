@@ -7,7 +7,7 @@ function Profile({ user }) {
     <div>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <img src={user.profilePictureUrl} alt="Profile Picture" style={{ marginRight: '10px', width: '100px', height: '100px', borderRadius: '50%' }} />
-        <h2>{user.username}'s Profile</h2>
+        <h2>{`${user.firstname} ${user.lastname}'s Profile`}</h2>
       </div>
       {user.posts && user.posts.length > 0 ? user.posts.map(post => 
         <div key={post.id} className="card mb-3">
