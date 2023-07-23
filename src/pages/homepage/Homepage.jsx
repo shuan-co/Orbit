@@ -9,6 +9,7 @@ import Explore from './components/Explore.jsx';
 import Notifications from './components/Notifications.jsx';
 import './homepage.css';
 
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import NavigationBar from '../../components/navigation2/NavigationBar.jsx';
 
@@ -18,16 +19,43 @@ function Homepage() {
 
     useEffect(() => {
         const auth = getAuth();
-        const unsubscribe = onAuthStateChanged(auth, user => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setCurrentUser(user);
+                fetchUserDocument(user).then(fullUser => {
+                    if (fullUser) {
+                        setCurrentUser(fullUser);
+                    } else {
+                        console.log('No such user!');
+                    }
+                });
             } else {
                 setCurrentUser(null);
             }
         });
-
+    
         return () => unsubscribe();
     }, []);
+    
+    async function fetchUserDocument(user) {
+        console.log("User object:", user);
+    
+        const db = getFirestore();
+        const userRef = doc(db, 'users', user.uid, 'data', user.uid);
+        console.log("Fetching user doc for uid:", user.uid);
+        const userDoc = await getDoc(userRef);
+        console.log("Fetched user doc:", userDoc);
+    
+        if (userDoc.exists()) {
+            const fullUser = { 
+                uid: user.uid, 
+                email: user.email, 
+                ...userDoc.data() 
+            };
+            return fullUser;
+        } else {
+            return null;
+        }
+    }          
 
     let MainContent;
     switch (activePage) {
@@ -38,7 +66,7 @@ function Homepage() {
             MainContent = <Explore />;
             break;
         case "profile":
-            MainContent = <Profile />;
+            MainContent = <Profile user={currentUser} />;
             break;
         default:
             MainContent = <Feed currentUser={currentUser} />;
