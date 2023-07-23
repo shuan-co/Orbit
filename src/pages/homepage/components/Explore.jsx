@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import { collection, getDocs, query, limit } from 'firebase/firestore';
+import { collection, doc, getDocs, getDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/Firebase';
 
 function Explore() {
@@ -8,16 +8,23 @@ function Explore() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const usersCol = collection(db, 'users');
-      const q = query(usersCol, limit(5));
-      const querySnapshot = await getDocs(q);
+      // First, fetch the list of user UIDs
+      const userUIDsDoc = await getDoc(doc(db, 'meta', 'userUIDs'));
+      const userUIDs = userUIDsDoc.data().uids;
 
-      setUsers(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      // Then, fetch each user's data using their UID
+      const fetchedUsers = [];
+      for (const uid of userUIDs) {
+        const userDoc = await getDoc(doc(db, uid, 'data'));
+        fetchedUsers.push({ id: uid, ...userDoc.data() });
+      }
+
+      setUsers(fetchedUsers);
     };
 
     fetchUsers();
   }, []);
-
+  
   return (
     <div style={{ width: "100%", marginTop: "5vh" }}>
       <h2>Explore</h2>
@@ -25,8 +32,8 @@ function Explore() {
         users.map(user => (
           <Card className="mb-3" key={user.id}>
             <Card.Body>
-              <Card.Title>{user.firstname}</Card.Title> {/* Use firstname instead of username */}
-              <Card.Link href={`/profile/${user.id}`}>View Profile</Card.Link> {/* Use id instead of username */}
+              <Card.Title>{user.firstname}</Card.Title> {}
+              <Card.Link href={`/profile/${user.id}`}>View Profile</Card.Link> {}
             </Card.Body>
           </Card>
         ))
