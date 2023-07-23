@@ -45,28 +45,20 @@ const addUser = (event) => {
   const addUID = document.getElementById("content-message-add-user").value;
   const docRef = doc(config.firestore, addUID, "/friends");
 
-  // Check if the addUID document exists
+
   getDoc(docRef)
     .then((docSnapshot) => {
       if (docSnapshot.exists()) {
-        // Document exists, proceed with the getUID() function
         getUID()
           .then((uid) => {
-            // Now you can add the documents to the corresponding collections
-            // setDoc(doc(collection(config.firestore, "uid/friends/addUID")), {});
-            // Check if uid/friends/conversations/addUID exists
             const conversationsRef1 = doc(config.firestore, uid, "/friends", addUID, "verification");
             const conversationsRef2 = doc(config.firestore, addUID, "/friends", uid, "verification");
 
-            // Check if the conversation with addUID already exists
             getDoc(conversationsRef1)
               .then((conversationsSnapshot) => {
                 if (conversationsSnapshot.exists()) {
                   console.log(`Conversation with ${addUID} already exists. No action taken.`);
-                  // Handle the case when the conversation already exists.
-                  // For example, show an error message or perform other actions as needed.
                 } else {
-                  // Conversations don't exist, create them
                   setDoc(doc(collection(config.firestore, uid, "friends", addUID), "verification"), {});
                   setDoc(doc(collection(config.firestore, addUID, "friends", uid), "verification"), {});;
                   updateDoc(doc(config.firestore, uid, "/friends"), { [addUID]: addUID })
@@ -83,19 +75,17 @@ const addUser = (event) => {
           });
       } else {
         console.log(`Document with ID ${addUID} does not exist.`);
-        // Handle the case when the document does not exist in the collection
-        // For example, show an error message or perform other actions as needed.
       }
     })
     .catch((error) => {
       console.error("Error checking document existence:", error);
     });
 
-  event.preventDefault(); // Prevent the default form submission
+  event.preventDefault();
 };
 
 
-var friendRepository = []; // Initialize friendRepository as an empty array
+var friendRepository = [];
 
 async function fetchFriendData(uid) {
   try {
@@ -108,7 +98,7 @@ async function fetchFriendData(uid) {
         duplicates = true;
     })
     if (!duplicates)
-      friendRepository.push(friendData); // Push the fetched data into the friendRepository array
+      friendRepository.push(friendData);
   } catch (error) {
     console.error("Error fetching data for UID:", uid, error);
   }
@@ -152,24 +142,24 @@ function ChatSpace() {
   const [chatboxid, setChatBoxId] = useState(true);
   const [prevName, setPrevName] = useState("");
 
-  // Current User Selected
+
   const [selectedFriend, setData] = useState({
     name: '',
     tagline: '',
     uid: 'buffer'
   });
 
-  // Function to update the name state
+
   const updateName = (nameValue) => {
     setData((prevData) => ({ ...prevData, name: nameValue }));
   };
 
-  // Function to update the tagline state
+
   const updateTagline = (taglineValue) => {
     setData((prevData) => ({ ...prevData, tagline: taglineValue }));
   };
 
-  // Function to update the uid state
+
   const updateUid = (uidValue) => {
     setData((prevData) => ({ ...prevData, uid: uidValue }));
   };
@@ -189,9 +179,7 @@ function ChatSpace() {
 
   }
 
-  // Get Friend Names
   useEffect(() => {
-    // Loop through each UID in friendsUID and call the fetchFriendData function
     for (const uid in friendsUID) {
       fetchFriendData(friendsUID[uid]);
     }
