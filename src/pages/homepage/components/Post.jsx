@@ -25,7 +25,7 @@ function Post({ post, onClick, currentUser, handleDelete }) {
                     <Card.Title>{title}</Card.Title>
                     {mediaElements}
                     <Card.Text>{text}</Card.Text>
-                    <p>Posted by: <a href="#">{author.displayName}</a></p>
+                    <p>Posted by: <a href="#">{author.firstname} {author.lastname}</a></p>
                     {author?.uid === currentUser?.uid ? <Button variant="danger" onClick={handleDelete}>Delete</Button> : null}
                 </Card.Body>
             </Card>

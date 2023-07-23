@@ -32,11 +32,11 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
             text: postText,
             author: {
               uid: currentUser.uid,
-              displayName: currentUser.displayName,
+              firstname: currentUser.firstname,
+              lastname: currentUser.lastname,
             },
             media: []
-          };
-          
+          };          
       
         try {
             const docRef = await addDoc(collection(db, "posts"), newPost);
@@ -64,11 +64,12 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
             text: postText,
             author: {
               uid: currentUser.uid,
-              displayName: currentUser.displayName,
+              firstname: currentUser.firstname,
+              lastname: currentUser.lastname,
             },
             media: []
           };
-      
+                    
         try {
           const docRef = await addDoc(collection(db, "posts"), newPost);
           console.log("Document written with ID: ", docRef.id);
