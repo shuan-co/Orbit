@@ -8,11 +8,9 @@ function Explore() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      // First, fetch the list of user UIDs
       const userUIDsDoc = await getDoc(doc(db, 'meta', 'userUIDs'));
       const userUIDs = userUIDsDoc.data().uids;
 
-      // Then, fetch each user's data using their UID
       const fetchedUsers = [];
       for (const uid of userUIDs) {
         const userDoc = await getDoc(doc(db, uid, 'data'));

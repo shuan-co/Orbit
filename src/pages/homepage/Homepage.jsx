@@ -82,7 +82,7 @@ function Homepage() {
                 <Container fluid>
                     <Row>
                         <Col xs={3} className="sidebar-sticky">
-                            <Sidebar setActivePage={setActivePage} />
+                           <Sidebar currentUser={currentUser} setActivePage={setActivePage} />
                         </Col>
                         <Col xs={6}>
                             {MainContent}

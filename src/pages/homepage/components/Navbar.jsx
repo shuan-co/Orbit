@@ -40,8 +40,6 @@ function TopNavbar() {
 
 export default TopNavbar;
 
-// Dummy functions for demonstration purposes
-// You'll need to replace these with your actual implementation
 function loadNotificationContent(id) {
     console.log(`Loading notification content for ${id}`);
 }

@@ -3,14 +3,12 @@ import { ListGroup, Card } from 'react-bootstrap';
 import './Trending.css';
 
 function Trending() {
-    // Assume you get this data from your server
     const trendingTopics = [
         {
             title: 'Trending in tech',
             text: '#AI',
             stats: '25.2K Tweets',
         },
-        // ... other topics
     ];
 
     return (
