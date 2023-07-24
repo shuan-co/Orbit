@@ -84,11 +84,8 @@ function Homepage() {
                         <Col xs={3} className="sidebar-sticky">
                            <Sidebar currentUser={currentUser} setActivePage={setActivePage} />
                         </Col>
-                        <Col xs={6}>
+                        <Col xs={8}>
                             {MainContent}
-                        </Col>
-                        <Col xs={3}>
-                            <Trending />
                         </Col>
                     </Row>
                 </Container>

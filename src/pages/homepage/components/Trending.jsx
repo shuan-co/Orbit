@@ -6,8 +6,8 @@ function Trending() {
     const trendingTopics = [
         {
             title: 'Trending in tech',
-            text: '#AI',
-            stats: '25.2K Tweets',
+            text: '#Orbit',
+            stats: '20 hits',
         },
     ];
 
