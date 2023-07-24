@@ -3,11 +3,9 @@ import { ListGroup } from 'react-bootstrap';
 import { faReply, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// Hardcoded notifications data
 const notificationsData = [
   { type: 'reply', user: 'Seele' },
   { type: 'reply', user: 'Serval' },
-  // Add more notifications as necessary
 ];
 
 function Notifications() {

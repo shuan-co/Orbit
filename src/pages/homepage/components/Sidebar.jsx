@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faRocket, faUser, faBell, faPlus } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 
-function Sidebar({ setPostModalShow, setActivePage }) {
+function Sidebar({ currentUser, setPostModalShow, setActivePage }) {
     return (
         <div className="sidebar">
             <div className="sidebar-container">
@@ -24,8 +24,9 @@ function Sidebar({ setPostModalShow, setActivePage }) {
                     <FontAwesomeIcon icon={faPlus} /> Create
                 </Button>
                 <div style={{ position: "absolute", bottom: "150px", left: "50px", display: "flex", alignItems: "center" }}>
-                    <img id="sidebar-profile-picture" src="himeko.jpg" alt="Profile Picture" style={{ width: "75px", height: "75px", borderRadius: "50%", marginRight: "10px" }} />
-                    <p id="sidebar-username" style={{ fontSize: "xx-large" }}>Himeko</p>
+                    <p id="sidebar-username" style={{ fontSize: "xx-large" }}>
+                        {currentUser ? `${currentUser.firstname} ${currentUser.lastname}` : "Anonymous"}
+                    </p>
                 </div>
             </div>
         </div>
@@ -34,8 +35,6 @@ function Sidebar({ setPostModalShow, setActivePage }) {
 
 export default Sidebar;
 
-// Dummy functions for demonstration purposes
-// You'll need to replace these with your actual implementation
 function loadContent(page) {
     console.log(`Loading content for ${page}`);
 }
