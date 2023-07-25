@@ -78,7 +78,7 @@ function Homepage() {
         <div>
             <NavigationBar />
             <TopNavbar />
-            <div style={{  }}>
+            <div style={{ overflowY: 'auto' }}>
                 <Container fluid>
                     <Row>
                         <Col xs={3} className="sidebar-sticky">
