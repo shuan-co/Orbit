@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./navigationbar.css";
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const NavigationBar = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExitButtonClicked, setIsExitButtonClicked] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -25,11 +28,51 @@ const NavigationBar = () => {
   };
 
   useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+            fetchUserDocument(user).then(fullUser => {
+                if (fullUser) {
+                    setCurrentUser(fullUser);
+                } else {
+                    console.log('No such user!');
+                }
+            });
+        } else {
+            setCurrentUser(null);
+        }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
     if (isExitButtonClicked && isVisible === false) {
       setIsExitButtonClicked(false);
     }
   }, [isExitButtonClicked, isVisible]);
 
+  async function fetchUserDocument(user) {
+    console.log("User object:", user);
+
+    const db = getFirestore();
+    const userRef = doc(db, user.uid, 'data');
+    console.log("Fetching user doc for uid:", user.uid);
+    const userDoc = await getDoc(userRef);
+    console.log("Fetched user doc:", userDoc);
+    console.log("Fetched user doc data:", userDoc.data());
+
+    if (userDoc.exists()) {
+        const fullUser = {
+            uid: user.uid,
+            email: user.email,
+            ...userDoc.data()
+        };
+        return fullUser;
+    } else {
+        return null;
+    }
+  }
   return (
     <div id="body-navigationbar">
       {isVisible && (
@@ -47,15 +90,15 @@ const NavigationBar = () => {
                 <div id="profileimg_container">
                   <img
                     id="profile_image"
-                    src="./chatspace/himeko.jpg"
-                    alt="himeko"
+                    src="./saved_videos/profile_pictures/Profile_Picture_Peppy.png"
+                    alt="pfp"
                   />
                 </div>
                 <div id="username_container">
-                  <p className="userinfo">Himeko</p>
+                  <p className="userinfo">{`${currentUser.firstname} ${currentUser.lastname}`}</p>
                 </div>
                 <div id="tagline_container">
-                  <p className="userinfo">Innovation for the future</p>
+                  <p className="userinfo">Test</p>
                 </div>
               </div>
               <div id="topb_bothalf">
@@ -117,7 +160,7 @@ const NavigationBar = () => {
                 </span>
                 <span className="itembox">
                   <div className="nav_button">
-                    <a id="saved_button" href="/savedvideos"></a>
+                    <a id="saved_button" href="/reels"></a>
                   </div>
                   <div className="nav_label">
                     <p className="nav_labeltext">Reels</p>
