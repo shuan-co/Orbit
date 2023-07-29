@@ -1,0 +1,11 @@
+.carousel-indicators{
+        visibility: hidden;
+}
+
+#author_info{
+        text-align: left;
+}
+
+#caption_info{
+        text-align: left;
+}
