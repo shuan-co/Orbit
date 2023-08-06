@@ -23,7 +23,7 @@ function MediaPlayer(){
                                         if(doc.data().media.length > 0){
                                                 // console.log(doc.data().media[0].type); // For debugging
 
-                                                if(doc.data().media[0].type.includes('video')){
+                                                if(doc.data().media[0].type.includes('video') || doc.data().media[0].type.includes('image')){
                                                         posts.push(doc);
                                                 }
                                         }
