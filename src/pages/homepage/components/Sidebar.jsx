@@ -14,9 +14,6 @@ function Sidebar({ currentUser, setPostModalShow, setActivePage }) {
                 <Button variant="primary" className="sidebar-button" onClick={() => setActivePage("profile")}>
                     <FontAwesomeIcon icon={faUser} /> Profile
                 </Button>
-                <Button variant="success" className="sidebar-button" onClick={() => setPostModalShow(true)}>
-                    <FontAwesomeIcon icon={faPlus} /> Create
-                </Button>
                 <div style={{ position: "absolute", bottom: "150px", left: "50px", display: "flex", alignItems: "center" }}>
                     <p id="sidebar-username" style={{ fontSize: "xx-large" }}>
                         {currentUser ? `${currentUser.firstname} ${currentUser.lastname}` : "Anonymous"}
