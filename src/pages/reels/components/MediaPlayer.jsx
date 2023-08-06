@@ -68,7 +68,7 @@ function MediaPlayer(){
         }
 
         return(
-                <div mediaplayer_div>
+                <div id = "mediaplayer_div">
                         <Carousel id="player_carousel">
                                 {carouselItems}
                         </Carousel>
