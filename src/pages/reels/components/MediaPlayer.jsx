@@ -6,155 +6,65 @@ import ReactPlayer from "react-player";
 import "bootstrap/dist/css/bootstrap.css";
 import "./MediaPlayer.css";
 
-let mediaType = [];
-let mediaURLs = [];
-let author_name = [];
-let captions = [];
-
 function MediaPlayer(){
+
         const [mediaArray, setMediaArray] = useState([]);
-        const [authorsArray, setauthorsArray] = useState([]);
-        const [captionsArray, setCaptionsArray] = useState([]);
-        const [activeIndex, setActiveIndex] = useState(0);
 
+        // To connect to db
         useEffect(() => {
-                mediaURLs.length = 0;
-                mediaType.length = 0;
-                const fetchMediaData = async () => {
-
+                const fetchPosts = async () => { // to fetch post data
                         try{
-                                const mediaData = [];
+                                const posts = [];
                                 const postsCollection = collection(db, "posts");
                                 const snapshot = await getDocs(postsCollection);
 
-                                snapshot.forEach((doc) =>{
-                                        const media = doc.data().media;
-                                        mediaData.push(...media);
+                                snapshot.forEach((doc) => {
+
+                                        if(doc.data().media.length > 0){
+                                                // console.log(doc.data().media[0].type); // For debugging
+
+                                                if(doc.data().media[0].type.includes('video')){
+                                                        posts.push(doc);
+                                                }
+                                        }
                                 });
 
-                                setMediaArray(mediaData);
-
-                                // To display elements to log and to get types
-                                mediaData.forEach((mediaItem, index) =>{
-                                        console.log(`Element ${index} is of type ${mediaItem.type}:`, mediaItem);
-                                        mediaType.push(mediaItem.type);
-                                        mediaURLs.push(mediaItem.url);
-                                });
-
-                                console.log("Number of medias: ", mediaData.length); // To get length of data
-                                console.log("Number of datatypes: ", mediaType.length); // To get length of types of media
-
+                                setMediaArray(posts);
+                                console.log('Posts retrieved');
                         }
-
                         catch(error){
                                 console.log('Error: ', error);
-                        };
-                }
-
-                fetchMediaData();
-
-                const fetchAuthorData = async () => {
-
-                        try{
-                                const authorData = [];
-                                const postsCollection = collection(db, "posts");
-                                const snapshot = await getDocs(postsCollection);
-                                const author_first_names = [];
-                                const author_last_names = [];
-
-                                snapshot.forEach((doc) =>{
-                                        const author = doc.data().author;
-                                        authorData.push(author);
-                                });
-
-                                setauthorsArray(authorData);
-
-                                // To display elements to log and to get types
-                                authorData.forEach((authorItem, index) =>{
-                                        author_first_names.push(authorItem.firstname);
-                                        author_last_names.push(authorItem.lastname);
-                                        author_name.push(authorItem.firstname + " " + authorItem.lastname);
-                                        console.log(authorItem.firstname + " " + authorItem.lastname);
-                                });
-
-                                console.log("Number of authors: ", authorData.length); // To get length of data
-
-
                         }
-
-                        catch(error){
-                                console.log('Error: ', error);
-                        };
                 }
 
-                fetchAuthorData();
-
-                const fetchCaptionData = async () => {
-
-                        try{
-                                const captionData = [];
-                                const postsCollection = collection(db, "posts");
-                                const snapshot = await getDocs(postsCollection);
-
-                                snapshot.forEach((doc) =>{
-                                        const caption = doc.data().text;
-                                        captionData.push(caption);
-                                });
-
-                                setCaptionsArray(captionData);
-
-                                // To display elements to log and to get types
-                                captionData.forEach((captionItem, index) =>{
-                                        captions.push(captionItem);
-                                });
-
-                                console.log("Number of captions: ", captionData.length); // To get length of data
-                        }
-
-                        catch(error){
-                                console.log('Error: ', error);
-                        };
-                }
-
-                fetchCaptionData();
-        }, []);
+                fetchPosts();
+        }, [])
 
         const carouselItems = [];
-        for(let index = 0; index < mediaURLs.length; index++){
-                if(mediaType[index].toLowerCase().includes("video")){
-                        console.log(index, mediaURLs[index], mediaType[index])
+        for(let index = 0; index < mediaArray.length; index++){
 
-                        const config = {
-                                attributes: {
-                                  disablePictureInPicture: true,
-                                  controlsList: 'nodownload'
-                                }
-                              };
+                const post_author = mediaArray[index].data().author.firstname.concat(' ')
+                .concat(mediaArray[index].data().author.lastname);
 
-
-                        carouselItems.push(
-                                <Carousel.Item>
-                                        <ReactPlayer
-                                                url={mediaURLs[index]}
-                                                width="100%"
-                                                height="75vh"
-                                                pip={true}
-                                                controls={true}
-                                                playing={false}
-                                                volume={0.5}
-                                                loop={true}
-                                                config={config}
-                                        />
-                                        <div class="carousel-caption">
-                                                <h2 id="caption_info">{captions[index]}</h2>
-                                                <h3 id="author_info">Posted by: {author_name[index]}</h3>
-                                        </div>
-                                </Carousel.Item>
-                        );
-                }
-                else{
-                        console.log("Invalid type")
-                }
+                carouselItems.push(
+                        <Carousel.Item>
+                                <ReactPlayer
+                                        url={mediaArray[index].data().media[0].url}
+                                        width="100%"
+                                        height="75vh"
+                                        pip={true}
+                                        controls={true}
+                                        playing={false}
+                                        volume={0.5}
+                                        loop={true}
+                                />
+                                <div className="carousel-caption">
+                                                <h1 id="caption_title">{mediaArray[index].data().title}</h1>
+                                                <h2 id="caption_info">{mediaArray[index].data().text}</h2>
+                                                <h3 id="author_info">{post_author}</h3>
+                                </div>
+                        </Carousel.Item>
+                );
         }
 
         return(
@@ -166,4 +76,4 @@ function MediaPlayer(){
         );
 };
 
-export default MediaPlayer
+export default MediaPlayer;
