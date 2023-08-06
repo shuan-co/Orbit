@@ -46,32 +46,43 @@ function MediaPlayer(){
                 const post_author = mediaArray[index].data().author.firstname.concat(' ')
                 .concat(mediaArray[index].data().author.lastname);
 
-                if(mediaArray[index].data().media[0].type.includes('video'){
+                if(mediaArray[index].data().media[0].type.includes('video')){
                         carouselItems.push(
-                        <Carousel.Item>
-                                <ReactPlayer
-                                        url={mediaArray[index].data().media[0].url}
-                                        width="100%"
-                                        height="75vh"
-                                        pip={true}
-                                        controls={true}
-                                        playing={false}
-                                        volume={0.5}
-                                        loop={true}
-                                />
-                                <div className="carousel-caption">
-                                                <h1 id="caption_title">{mediaArray[index].data().title}</h1>
-                                                <h2 id="caption_info">{mediaArray[index].data().text}</h2>
-                                                <h3 id="author_info">{post_author}</h3>
-                                </div>
-                        </Carousel.Item>
-                );
+                                <Carousel.Item>
+                                        <ReactPlayer
+                                                url={mediaArray[index].data().media[0].url}
+                                                width="100%"
+                                                height="75vh"
+                                                pip={true}
+                                                controls={true}
+                                                playing={false}
+                                                volume={0.5}
+                                                loop={true}
+                                        />
+                                        <div className="carousel-caption">
+                                                        <h1 id="caption_title">{mediaArray[index].data().title}</h1>
+                                                        <h2 id="caption_info">{mediaArray[index].data().text}</h2>
+                                                        <h3 id="author_info">{post_author}</h3>
+                                        </div>
+                                </Carousel.Item>
+                        );
                 }
-
                 else{
-                        <Carousel.Item>
-                                <img src = mediaArray[index].data().media[0].url></img>
-                        </Carousel.Item>
+                        carouselItems.push(
+                                <Carousel.Item>
+                                        <div id="carousel_div">
+                                                <div id="image_div">
+                                                        <img id="content_image" src = {mediaArray[index].data().media[0].url}></img>
+                                                </div>
+
+                                                <div className="carousel-caption">
+                                                                <h1 id="caption_title">{mediaArray[index].data().title}</h1>
+                                                                <h2 id="caption_info">{mediaArray[index].data().text}</h2>
+                                                                <h3 id="author_info">By: {post_author}</h3>
+                                                </div>
+                                        </div>
+                                </Carousel.Item>
+                        );
                 }
         }
 
