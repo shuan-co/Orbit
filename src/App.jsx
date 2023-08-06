@@ -19,7 +19,7 @@ import Login from "./pages/authentication/login/Login.jsx";
 import Register from "./pages/authentication/register/Register";
 import ChatSpace from "./pages/chatspace/ChatSpace.jsx";
 import Routing from "./pages/Routing.jsx";
-import Savedposts from "./pages/saved_videos/Savedposts";
+import Reels from "./pages/reels/Reels";
 import { useAuth } from "./Global";
 import Homepage from "./pages/homepage/Homepage";
 import Explore from "./pages/homepage/components/Explore";
@@ -86,10 +86,10 @@ function App() {
             }
           />
           <Route
-            path="savedvideos"
+            path="reels"
             element={
               <Protected isLoggedIn={isLoggedIn}>
-                <Savedposts />
+                <Reels />
               </Protected>
             }
           />

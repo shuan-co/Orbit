@@ -1,0 +1,22 @@
+.carousel-indicators{
+        visibility: hidden;
+}
+
+#author_info{
+        text-align: left;
+}
+
+#caption_info{
+        text-align: left;
+}
+
+#caption_title{
+        text-align: left;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 750px;
+  height: 750px;
+  opacity: 0;
+}
