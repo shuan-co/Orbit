@@ -192,13 +192,6 @@ function Feed({ posts: initialPosts = [], currentUser, deletePost }) {
 
     return (
         <div>
-            <div id="header">
-                <h2>Home</h2>
-                <div id="home-button-container" className="button-container">
-                    <Button className="tab-button" onClick={() => loadContent('observe')}>Popular</Button>
-                    <Button className="tab-button" onClick={() => loadContent('signals')}>Local Group</Button>
-                </div>
-            </div>
             <div id="notifications-buttons" style={{display: "none"}}>
                 <Button className="tab-button" onClick={() => showHardcodedNotificationType('reply')}>Replies</Button>
                 <Button className="tab-button" onClick={() => showHardcodedNotificationType('like')}>Likes</Button>

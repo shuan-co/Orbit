@@ -11,14 +11,8 @@ function Sidebar({ currentUser, setPostModalShow, setActivePage }) {
                 <Button variant="primary" className="sidebar-button" onClick={() => setActivePage("feed")}>
                     <FontAwesomeIcon icon={faHome} /> Home
                 </Button>
-                <Button variant="primary" className="sidebar-button" onClick={() => setActivePage("explore")}>
-                    <FontAwesomeIcon icon={faRocket} /> Explore
-                </Button>
                 <Button variant="primary" className="sidebar-button" onClick={() => setActivePage("profile")}>
                     <FontAwesomeIcon icon={faUser} /> Profile
-                </Button>
-                <Button variant="primary" className="sidebar-button" onClick={() => { loadContent('notifications'); showAllHardcodedNotifications(); }}>
-                    <FontAwesomeIcon icon={faBell} /> Notifications
                 </Button>
                 <Button variant="success" className="sidebar-button" onClick={() => setPostModalShow(true)}>
                     <FontAwesomeIcon icon={faPlus} /> Create
