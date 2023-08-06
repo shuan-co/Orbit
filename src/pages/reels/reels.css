@@ -1,0 +1,9 @@
+.reels_content_panel{
+        width: 100vw;
+        height: 100vh;
+        margin: auto;
+        position: absolute;
+
+        overflow-x: hidden;
+        overflow-y: hidden;
+}

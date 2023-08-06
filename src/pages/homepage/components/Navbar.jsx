@@ -23,7 +23,7 @@ function TopNavbar() {
                         <NavDropdown.Item href="#" onClick={() => loadNotificationContent(2)}>Notification 2</NavDropdown.Item>
                         <NavDropdown.Item href="#" onClick={() => loadNotificationContent(3)}>Notification 3</NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link href="/savedvideos">
+                    <Nav.Link href="/reels">
                         <FontAwesomeIcon icon={faRocket} /> Reels
                     </Nav.Link>
                     <Nav.Link href="/chatspace" onClick={() => loadContent('messages')}>
