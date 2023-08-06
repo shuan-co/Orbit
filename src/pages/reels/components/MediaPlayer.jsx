@@ -46,7 +46,8 @@ function MediaPlayer(){
                 const post_author = mediaArray[index].data().author.firstname.concat(' ')
                 .concat(mediaArray[index].data().author.lastname);
 
-                carouselItems.push(
+                if(mediaArray[index].data().media[0].type.includes('video'){
+                        carouselItems.push(
                         <Carousel.Item>
                                 <ReactPlayer
                                         url={mediaArray[index].data().media[0].url}
@@ -65,6 +66,13 @@ function MediaPlayer(){
                                 </div>
                         </Carousel.Item>
                 );
+                }
+
+                else{
+                        <Carousel.Item>
+                                <img src = mediaArray[index].data().media[0].url></img>
+                        </Carousel.Item>
+                }
         }
 
         return(
