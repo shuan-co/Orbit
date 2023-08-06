@@ -98,13 +98,13 @@ const NavigationBar = () => {
                   <p className="userinfo">{`${currentUser.firstname} ${currentUser.lastname}`}</p>
                 </div>
                 <div id="tagline_container">
-                  <p className="userinfo">Test</p>
+                  <p className="userinfo">{`UID: ${currentUser.uid}`}</p>
                 </div>
               </div>
               <div id="topb_bothalf">
                 <div id="bio_container">
                   <p id="bio">No bio</p>{" "}
-                  {/*NOTE: Placeholder only, create seperate div for actual text display*/}
+                  {/*NOTE: Placeholder only*/}
                 </div>
               </div>
             </div>
@@ -116,17 +116,14 @@ const NavigationBar = () => {
                 <div id="sidebar">
                   <div className="sidebar_icon">
                     <div className="sidebar_button">
-                      <button id="emails" /> {/*TODO: Implement routing */}
+                      <a href="../../../chatspace">
+                        <button id="emails" />
+                      </a>
                     </div>
                   </div>
                   <div className="sidebar_icon">
                     <div className="sidebar_button">
-                      <button id="events" /> {/*TODO: Implement routing */}
-                    </div>
-                  </div>
-                  <div className="sidebar_icon">
-                    <div className="sidebar_button">
-                      <button id="settings" /> {/*TODO: Implement routing */}
+                        <button id="settings" /> {/*TODO: Implement routing */}
                     </div>
                   </div>
                 </div>
